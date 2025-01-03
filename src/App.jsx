@@ -1,8 +1,14 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import { AnimatePresence } from "framer-motion";
 import AnimatedLogo from "./components/AnimatedLogo";
-// import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -10,36 +16,34 @@ import GlobalStyles from "./styles/GlobalStyles";
 import theme from "./styles/theme";
 
 function App() {
-  const [isLogoComplete, setLogoComplete] = useState(false);
+  const [isLogoInNavbar, setLogoInNavbar] = useState(false);
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Router>
-        {/* AnimatedLogo remains visible with a transition */}
         <AnimatedLogo
-          onComplete={() => {
-            setTimeout(() => setLogoComplete(true), 100); // Delay for smooth transition
-          }}
+          onComplete={() => setLogoInNavbar(true)}
+          inNavbar={isLogoInNavbar}
         />
-        <div
-          style={{
-            opacity: isLogoComplete ? 1 : 0,
-            transition: "opacity 1s ease-in-out",
-          }}
-        >
-          {/* <Navbar /> */}
-          <Routes>
-            <Route
-              path="/"
-              element={<HeroSection isVisible={isLogoComplete} />}
-            />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </div>
+        {isLogoInNavbar && <Navbar />}
+        <AnimatedRoutes isLogoInNavbar={isLogoInNavbar} />
       </Router>
     </ThemeProvider>
+  );
+}
+
+function AnimatedRoutes({ isLogoInNavbar }) {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<HeroSection isVisible={isLogoInNavbar} />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </AnimatePresence>
   );
 }
 

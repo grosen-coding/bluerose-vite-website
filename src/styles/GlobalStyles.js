@@ -11,12 +11,20 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: 'Arial', sans-serif;
-    color: ${({ theme }) => theme.colors.accentWhite};
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2 {
+    font-family: 'Playfair Display', serif;
     margin: 0;
+  }
+
+  h3, h4, h5, h6 {
+    margin: 0;
+  font-family: 'Montserrat', sans-serif;
   }
 
   a {

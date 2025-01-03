@@ -34,10 +34,13 @@ const HeroContainer = styled(motion.section).withConfig({
   h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
+    color: ${(props) => props.theme.colors.primaryBlue};
   }
 
-  p {
-    font-size: 1.5rem;
+  h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    font-family: "Montserrat", serif;
   }
 `;
 
@@ -48,10 +51,10 @@ const HeroSection = ({ isVisible }) => {
       initial="hidden"
       animate={isVisible ? "visible" : "hidden"}
     >
-      <motion.h1 variants={textVariants}>Welcome to Blue Rose Design</motion.h1>
-      <motion.p variants={textVariants}>
-        Elevating landscapes with creativity and precision.
-      </motion.p>
+      <motion.h1 variants={textVariants}>Blue Rose Design</motion.h1>
+      <motion.h2 variants={textVariants}>
+        Precision and Creativity, Drawn from Nature
+      </motion.h2>
     </HeroContainer>
   );
 };
