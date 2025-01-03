@@ -8,7 +8,7 @@ const pageVariants = {
 };
 
 // Styled Components
-const ContactContainer = styled(motion.div)`
+const ProcessContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,8 +16,8 @@ const ContactContainer = styled(motion.div)`
   min-height: 100vh;
   background: linear-gradient(
     to bottom right,
-    #16a085,
-    #1abc9c
+    #2c3e50,
+    #34495e
   ); /* Temporary color */
   color: white;
   text-align: center;
@@ -35,21 +35,22 @@ const ContactContainer = styled(motion.div)`
   }
 `;
 
-const Contact = () => {
+const DesignProcess = () => {
   return (
-    <ContactContainer
+    <ProcessContainer
       variants={pageVariants}
       initial="initial"
       animate="animate"
       exit="exit"
     >
-      <h1>Contact Us</h1>
+      <h1>Our Design Process</h1>
       <p>
-        Reach out to Blue Rose Design for inquiries, consultations, and service
-        details. We’re here to help bring your dream landscapes to life!
+        At Blue Rose Design, we guide you through a seamless design process that
+        transforms your vision into a breathtaking reality. From consultation to
+        completion, every step is tailored to your unique needs and preferences.
       </p>
-    </ContactContainer>
+    </ProcessContainer>
   );
 };
 
-export default Contact;
+export default DesignProcess;

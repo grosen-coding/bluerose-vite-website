@@ -37,7 +37,7 @@ const BusinessName = styled(Link)`
   padding-left: 0;
   margin-left: 0;
 
-  h3 {
+  h1 {
     font-weight: 700;
     font-size: 2.2rem;
     font-family: "Playfair Display", serif;
@@ -72,7 +72,7 @@ const NavLink = styled(Link)`
   transition: color 0.3s ease-in-out;
   font-family: "News Gothic", sans-serif;
   letter-spacing: 1.8px;
-  padding: 0 0.8rem;
+  padding: 0 0.4rem;
 
   &:hover {
     color: lightblue;
@@ -109,15 +109,21 @@ const Navbar = ({ isVisible }) => {
     >
       <LogoSpace />
       <BusinessName to="/">
-        <h3>
-          BLUE ROSE <span style={{ color: "white" }}>Design</span>
-        </h3>
-        <h4>Landscape Design | Project Management</h4>
+        <h1>
+          BLUE ROSE{" "}
+          <span style={{ color: "white", fontWeight: "300" }}>Design</span>
+        </h1>
+        <h4>
+          Landscape Design <span style={{ color: "#6D6D6D" }}>|</span> Project
+          Management
+        </h4>
       </BusinessName>
 
       <NavLinks>
-        <NavLink to="/about">about</NavLink>
-        <NavLink to="/design-process">design process</NavLink>
+        <NavLink to="/about">about </NavLink>{" "}
+        <span style={{ color: "#6D6D6D" }}>|</span>
+        <NavLink to="/design-process">design process</NavLink>{" "}
+        <span style={{ color: "#6D6D6D" }}>|</span>
         <NavLink to="/contact">contact</NavLink>
       </NavLinks>
     </NavContainer>

@@ -35,6 +35,7 @@ const HeroContainer = styled(motion.section).withConfig({
     font-size: 3rem;
     margin-bottom: 1rem;
     color: ${(props) => props.theme.colors.primaryBlue};
+    font-weight: 700;
   }
 
   h2 {
