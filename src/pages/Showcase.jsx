@@ -2,13 +2,13 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 
 const pageVariants = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1, transition: { duration: 0.4 } },
-  exit: { opacity: 0, transition: { duration: 0.4 } },
+  initial: { opacity: 0, x: -100 },
+  animate: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+  exit: { opacity: 0, x: 100, transition: { duration: 0.5 } },
 };
 
 // Styled Components
-const ContactContainer = styled(motion.div)`
+const ShowcaseContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,8 +16,8 @@ const ContactContainer = styled(motion.div)`
   min-height: 100vh;
   background: linear-gradient(
     to bottom right,
-    #16a085,
-    #1abc9c
+    #8e44ad,
+    #9b59b6
   ); /* Temporary color */
   color: white;
   text-align: center;
@@ -35,21 +35,21 @@ const ContactContainer = styled(motion.div)`
   }
 `;
 
-const Contact = () => {
+const Showcase = () => {
   return (
-    <ContactContainer
+    <ShowcaseContainer
       variants={pageVariants}
       initial="initial"
       animate="animate"
       exit="exit"
     >
-      <h1>Contact Us</h1>
+      <h1>Our Showcase</h1>
       <p>
-        Reach out to Blue Rose Design for inquiries, consultations, and service
-        details. We’re here to help bring your dream landscapes to life!
+        Explore some of our favorite projects and landscape transformations. At
+        Blue Rose Design, we create outdoor spaces that inspire and elevate.
       </p>
-    </ContactContainer>
+    </ShowcaseContainer>
   );
 };
 
-export default Contact;
+export default Showcase;

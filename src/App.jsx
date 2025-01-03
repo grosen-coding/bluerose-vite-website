@@ -13,6 +13,7 @@ import HeroSection from "./components/HeroSection";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import DesignProcess from "./pages/DesignProcess";
+import Showcase from "./pages/Showcase";
 import GlobalStyles from "./styles/GlobalStyles";
 import theme from "./styles/theme";
 
@@ -38,12 +39,13 @@ function AnimatedRoutes({ isLogoInNavbar }) {
   const location = useLocation();
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<HeroSection isVisible={isLogoInNavbar} />} />
         <Route path="/about" element={<About />} />
         <Route path="/design-process" element={<DesignProcess />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/showcase" element={<Showcase />} />
       </Routes>
     </AnimatePresence>
   );

@@ -7,11 +7,11 @@ const NavContainer = styled(motion.nav)`
   top: 0;
   left: 0;
   width: 100%;
-  height: 180px;
+  height: 150px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: ${(props) => props.theme.colors.darkGreen};
   padding: 2rem;
   z-index: 1000;
 `;
@@ -39,7 +39,7 @@ const BusinessName = styled(Link)`
 
   h1 {
     font-weight: 700;
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     font-family: "Playfair Display", serif;
     color: ${(props) => props.theme.colors.primaryBlue};
   }
@@ -111,7 +111,9 @@ const Navbar = ({ isVisible }) => {
       <BusinessName to="/">
         <h1>
           BLUE ROSE{" "}
-          <span style={{ color: "white", fontWeight: "300" }}>Design</span>
+          <span style={{ color: "white", fontWeight: "300", fontSize: "2rem" }}>
+            DESIGN
+          </span>
         </h1>
         <h4>
           Landscape Design <span style={{ color: "#6D6D6D" }}>|</span> Project
