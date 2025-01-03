@@ -22,9 +22,11 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
   }
 
-  h3, h4, h5, h6 {
+  h3, h4, h5, h6, p {
     margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'News Gothic', sans-serif;
+    letter-spacing: 1.8px;
+
   }
 
   a {

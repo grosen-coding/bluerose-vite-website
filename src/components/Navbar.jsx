@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { color, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const NavContainer = styled(motion.nav)`
   position: fixed;
@@ -70,6 +70,9 @@ const NavLink = styled(Link)`
   position: relative;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
+  font-family: "News Gothic", sans-serif;
+  letter-spacing: 1.8px;
+  padding: 0 0.8rem;
 
   &:hover {
     color: lightblue;
@@ -113,9 +116,9 @@ const Navbar = ({ isVisible }) => {
       </BusinessName>
 
       <NavLinks>
-        <NavLink to="/about">About</NavLink>
-        <NavLink to="/design-process">Design Process</NavLink>
-        <NavLink to="/contact">Contact</NavLink>
+        <NavLink to="/about">about</NavLink>
+        <NavLink to="/design-process">design process</NavLink>
+        <NavLink to="/contact">contact</NavLink>
       </NavLinks>
     </NavContainer>
   );
