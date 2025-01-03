@@ -1,9 +1,9 @@
-import Hero from "../components/Hero";
+import HeroSection from "../components/HeroSection";
 
 const Home = () => {
   return (
     <div>
-      <Hero />
+      <HeroSection isVisible={true} />
     </div>
   );
 };

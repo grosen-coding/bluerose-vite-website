@@ -1,26 +1,39 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { motion } from "framer-motion";
 
-const HeroContainer = styled.section.withConfig({
-  shouldForwardProp: (prop) => prop !== "isVisible", // Prevent isVisible from being passed to the DOM
+// Animation Variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 1.5, when: "beforeChildren", staggerChildren: 0.3 },
+  },
+};
+
+const textVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+};
+
+// Styled Components
+const HeroContainer = styled(motion.section).withConfig({
+  shouldForwardProp: (prop) => prop !== "isVisible",
 })`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url("/placeholder-image.jpg"); /* Use a placeholder or real image */
   background-size: cover;
   background-position: center;
   text-align: center;
   color: white;
-  opacity: ${(props) => (props.isVisible ? 1 : 0)};
-  transition: opacity 1.5s ease-in-out;
   background-color: black;
 
   h1 {
     font-size: 3rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   p {
@@ -30,12 +43,19 @@ const HeroContainer = styled.section.withConfig({
 
 const HeroSection = ({ isVisible }) => {
   return (
-    <HeroContainer isVisible={isVisible}>
-      <h1>Welcome to Blue Rose Design</h1>
-      <p>Elevating landscapes with creativity and precision.</p>
+    <HeroContainer
+      variants={containerVariants}
+      initial="hidden"
+      animate={isVisible ? "visible" : "hidden"}
+    >
+      <motion.h1 variants={textVariants}>Welcome to Blue Rose Design</motion.h1>
+      <motion.p variants={textVariants}>
+        Elevating landscapes with creativity and precision.
+      </motion.p>
     </HeroContainer>
   );
 };
+
 HeroSection.propTypes = {
   isVisible: PropTypes.bool.isRequired,
 };

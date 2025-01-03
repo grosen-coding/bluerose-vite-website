@@ -2,19 +2,19 @@ import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-// Styled-components for the logo container
 const LogoContainer = styled.div.withConfig({
-  shouldForwardProp: (prop) => prop !== "hasMoved", // Prevent hasMoved from being passed to the DOM
+  shouldForwardProp: (prop) => prop !== "hasMoved", // Prevent hasMoved from being forwarded
 })`
   position: fixed;
   top: ${(props) => (props.hasMoved ? "0" : "50%")};
   left: ${(props) => (props.hasMoved ? "0" : "50%")};
   transform: ${(props) =>
     props.hasMoved ? "translate(0, 0) scale(0.5)" : "translate(-50%, -50%)"};
+  opacity: ${(props) => (props.hasMoved ? 1 : 1)};
+  transition: all 1.5s ease-in-out;
   width: 500px;
   height: 500px;
   z-index: 9999;
-  transition: all 1.5s ease-in-out;
   overflow: hidden;
 `;
 
@@ -25,7 +25,6 @@ const AnimatedLogo = ({ onComplete }) => {
   useEffect(() => {
     const svgObject = svgRef.current;
 
-    // Wait for the embedded SVG animations to complete
     if (svgObject) {
       svgObject.addEventListener("load", () => {
         const svgDoc = svgObject.contentDocument;
@@ -36,10 +35,11 @@ const AnimatedLogo = ({ onComplete }) => {
           }
         }
 
-        // After 6 seconds (or your animation duration), transition the logo
         setTimeout(() => {
-          setHasMoved(true); // Trigger the move to top-left
-          if (onComplete) onComplete(); // Notify parent component
+          setHasMoved(true);
+          setTimeout(() => {
+            if (onComplete) onComplete(); // Notify parent component after transition
+          }, 50); // Match transition duration
         }, 6000); // Adjust this to match your SVG animation duration
       });
     }
@@ -59,6 +59,7 @@ const AnimatedLogo = ({ onComplete }) => {
     </LogoContainer>
   );
 };
+
 AnimatedLogo.propTypes = {
   onComplete: PropTypes.func,
 };
