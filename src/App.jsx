@@ -26,7 +26,7 @@ function App() {
           onComplete={() => setLogoInNavbar(true)}
           inNavbar={isLogoInNavbar}
         />
-        {isLogoInNavbar && <Navbar />}
+        {isLogoInNavbar && <Navbar isVisible={isLogoInNavbar} />}
         <AnimatedRoutes isLogoInNavbar={isLogoInNavbar} />
       </Router>
     </ThemeProvider>

@@ -13,7 +13,7 @@ const containerVariants = {
 
 const textVariants = {
   hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
 // Styled Components
@@ -44,14 +44,14 @@ const HeroContainer = styled(motion.section).withConfig({
   }
 `;
 
-const HeroSection = ({ isVisible }) => {
+const HeroSection = ({ isVisible, onComplete }) => {
   return (
     <HeroContainer
       variants={containerVariants}
       initial="hidden"
       animate={isVisible ? "visible" : "hidden"}
+      onAnimationComplete={onComplete} // Trigger when animation completes
     >
-      <motion.h1 variants={textVariants}>Blue Rose Design</motion.h1>
       <motion.h2 variants={textVariants}>
         Precision and Creativity, Drawn from Nature
       </motion.h2>

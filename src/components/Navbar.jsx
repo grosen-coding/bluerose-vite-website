@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { color, motion } from "framer-motion";
 
-const NavContainer = styled.nav`
+const NavContainer = styled(motion.nav)`
   position: fixed;
   top: 0;
   left: 0;
@@ -16,7 +17,7 @@ const NavContainer = styled.nav`
 `;
 
 const LogoSpace = styled.div`
-  width: 20%;
+  width: 23%;
   height: 100%;
 `;
 
@@ -24,8 +25,8 @@ const BusinessName = styled(Link)`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
-  width: 40%;
+  align-items: flex-start;
+  width: 35%;
   height: auto;
   font-size: 1.8rem;
   text-decoration: none;
@@ -33,10 +34,19 @@ const BusinessName = styled(Link)`
   cursor: pointer;
   transition: color 0.3s ease-in-out;
   padding-top: 1.9rem;
+  padding-left: 0;
+  margin-left: 0;
+
+  h3 {
+    font-weight: 700;
+    font-size: 2.2rem;
+    font-family: "Playfair Display", serif;
+    color: ${(props) => props.theme.colors.primaryBlue};
+  }
 
   h4 {
     font-weight: 300;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
   }
 
   &:hover {
@@ -48,7 +58,7 @@ const NavLinks = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40%;
+  width: 42%;
   gap: 1rem;
 `;
 
@@ -81,13 +91,27 @@ const NavLink = styled(Link)`
   }
 `;
 
-const Navbar = () => {
+// Navbar Animation Variants
+const navbarVariants = {
+  hidden: { y: -200, opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { duration: 2, ease: "easeOut" } },
+};
+
+const Navbar = ({ isVisible }) => {
   return (
-    <NavContainer>
-      <BusinessName to="/">
-        <h4>Landscape Design</h4> <h4>& Project Management</h4>
-      </BusinessName>
+    <NavContainer
+      variants={navbarVariants}
+      initial="hidden"
+      animate={isVisible ? "visible" : "hidden"}
+    >
       <LogoSpace />
+      <BusinessName to="/">
+        <h3>
+          BLUE ROSE <span style={{ color: "white" }}>Design</span>
+        </h3>
+        <h4>Landscape Design | Project Management</h4>
+      </BusinessName>
+
       <NavLinks>
         <NavLink to="/about">About</NavLink>
         <NavLink to="/design-process">Design Process</NavLink>

@@ -7,7 +7,7 @@ const LogoContainer = styled.div.withConfig({
 })`
   position: fixed;
   top: ${(props) => (props.inNavbar ? "0" : "50%")};
-  left: ${(props) => (props.inNavbar ? "50%" : "50%")};
+  left: ${(props) => (props.inNavbar ? "15%" : "50%")};
   transform: translate(-50%, ${(props) => (props.inNavbar ? "0" : "-50%")})
     scale(${(props) => (props.inNavbar ? 1 : 1)});
   transition: all 1.5s ease-in-out;
