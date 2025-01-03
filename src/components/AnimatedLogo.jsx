@@ -3,7 +3,9 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 // Styled-components for the logo container
-const LogoContainer = styled.div`
+const LogoContainer = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== "hasMoved", // Prevent hasMoved from being passed to the DOM
+})`
   position: fixed;
   top: ${(props) => (props.hasMoved ? "0" : "50%")};
   left: ${(props) => (props.hasMoved ? "0" : "50%")};

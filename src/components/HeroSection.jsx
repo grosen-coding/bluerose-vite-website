@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-const HeroContainer = styled.section`
+const HeroContainer = styled.section.withConfig({
+  shouldForwardProp: (prop) => prop !== "isVisible", // Prevent isVisible from being passed to the DOM
+})`
   display: flex;
   flex-direction: column;
   justify-content: center;
