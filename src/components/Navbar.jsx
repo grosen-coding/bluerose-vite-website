@@ -1,16 +1,12 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { motion } from "framer-motion";
 
-const NavContainer = styled(motion.nav)`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 150px;
+const NavContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  height: 100%;
   background-color: ${(props) => props.theme.colors.darkGreen};
   padding: 2rem;
   z-index: 1000;
@@ -94,19 +90,9 @@ const NavLink = styled(Link)`
   }
 `;
 
-// Navbar Animation Variants
-const navbarVariants = {
-  hidden: { y: -200, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 2, ease: "easeOut" } },
-};
-
-const Navbar = ({ isVisible }) => {
+const Navbar = () => {
   return (
-    <NavContainer
-      variants={navbarVariants}
-      initial="hidden"
-      animate={isVisible ? "visible" : "hidden"}
-    >
+    <NavContainer>
       <LogoSpace />
       <BusinessName to="/">
         <h1>

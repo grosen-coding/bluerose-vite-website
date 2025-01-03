@@ -1,12 +1,13 @@
-import { useState } from "react";
+import styled from "styled-components";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   useLocation,
 } from "react-router-dom";
+import { useState } from "react";
 import { ThemeProvider } from "styled-components";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import AnimatedLogo from "./components/AnimatedLogo";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
@@ -14,8 +15,33 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import DesignProcess from "./pages/DesignProcess";
 import Showcase from "./pages/Showcase";
+import Footer from "./components/Footer";
 import GlobalStyles from "./styles/GlobalStyles";
 import theme from "./styles/theme";
+
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+`;
+
+const ContentWrapper = styled.main`
+  flex: 1; /* Ensures main content fills available space */
+  padding-top: 150px; /* Pushes content below the Navbar */
+`;
+
+const Header = styled(motion.header)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20vh;
+  z-index: 1000; /* Ensures Navbar stays on top */
+  background-color: ${(props) => props.theme.colors.primaryBlue};
+  transform: translateY(${(props) => (props.isVisible ? "0" : "-100%")});
+  transition: transform 0.8s ease-in-out;
+  overflow: hidden;
+`;
 
 function App() {
   const [isLogoInNavbar, setLogoInNavbar] = useState(false);
@@ -24,12 +50,19 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Router>
-        <AnimatedLogo
-          onComplete={() => setLogoInNavbar(true)}
-          inNavbar={isLogoInNavbar}
-        />
-        {isLogoInNavbar && <Navbar isVisible={isLogoInNavbar} />}
-        <AnimatedRoutes isLogoInNavbar={isLogoInNavbar} />
+        <AppContainer>
+          <AnimatedLogo
+            onComplete={() => setLogoInNavbar(true)}
+            inNavbar={isLogoInNavbar}
+          />
+          <Header isVisible={isLogoInNavbar}>
+            {isLogoInNavbar && <Navbar />}
+          </Header>
+          <ContentWrapper>
+            <AnimatedRoutes isLogoInNavbar={isLogoInNavbar} />
+          </ContentWrapper>
+          <Footer />
+        </AppContainer>
       </Router>
     </ThemeProvider>
   );

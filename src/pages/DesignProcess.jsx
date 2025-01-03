@@ -11,9 +11,9 @@ const pageVariants = {
 const ProcessContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  min-height: 100vh;
+  height: 100%;
   background: linear-gradient(
     to bottom right,
     #2c3e50,
@@ -23,15 +23,15 @@ const ProcessContainer = styled(motion.div)`
   text-align: center;
   padding: 2rem;
 
-  h1 {
-    font-size: 3rem;
+  h2 {
+    color: ${(props) => props.theme.colors.primaryBlue};
+    font-size: 2.5rem;
     margin-bottom: 1rem;
-  }
-
-  p {
-    font-size: 1.5rem;
-    line-height: 1.8;
-    max-width: 800px;
+    font-weight: 300;
+    text-align: right;
+    display: inline-block;
+    width: 60%;
+    padding: 1rem;
   }
 `;
 
@@ -43,7 +43,7 @@ const DesignProcess = () => {
       animate="animate"
       exit="exit"
     >
-      <h1>Our Design Process</h1>
+      <h2>my design process</h2>
       <p>
         At Blue Rose Design, we guide you through a seamless design process that
         transforms your vision into a breathtaking reality. From consultation to

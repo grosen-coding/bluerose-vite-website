@@ -12,7 +12,7 @@ const containerVariants = {
 };
 
 const textVariants = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: 0, y: 0 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
@@ -24,25 +24,19 @@ const HeroContainer = styled(motion.section).withConfig({
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   background-size: cover;
   background-position: center;
   text-align: center;
   color: white;
   background-color: black;
 
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: ${(props) => props.theme.colors.primaryBlue};
-    font-weight: 700;
-  }
-
   h2 {
     font-size: 2rem;
     font-weight: 300;
     font-family: "News Gothic", sans-serif;
     letter-spacing: 1.8px;
+    /* padding-top: 5rem; */
   }
 `;
 

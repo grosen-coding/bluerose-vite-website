@@ -17,16 +17,23 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.6;
   }
 
-  h1, h2 {
+  h1 {
     font-family: 'Playfair Display', serif;
     margin: 0;
   }
 
-  h3, h4, h5, h6, p {
+  h2, h3, h4, h5, h6{
     margin: 0;
-  font-family: 'News Gothic', sans-serif;
+    /* font-family: 'News Gothic', sans-serif; */
     letter-spacing: 1.8px;
 
+  }
+
+  p {
+        font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 800px;
+    font-weight: 300;
   }
 
   a {

@@ -10,23 +10,22 @@ const pageVariants = {
 const AboutContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  min-height: 100vh;
+  height: 100%;
   background: linear-gradient(to bottom right, #001f3f, #0074d9);
   color: white;
   text-align: center;
   padding: 2rem;
 
-  h1 {
-    font-size: 3rem;
+  h2 {
+    font-size: 2.5rem;
     margin-bottom: 1rem;
-  }
-
-  p {
-    font-size: 1.5rem;
-    line-height: 1.8;
-    max-width: 800px;
+    font-weight: 300;
+    text-align: right;
+    display: inline-block;
+    width: 60%;
+    padding: 1rem;
   }
 `;
 
@@ -38,7 +37,7 @@ const About = () => {
       animate="animate"
       exit="exit"
     >
-      <h1>About Us</h1>
+      <h2>about</h2>
       <p>
         Blue Rose Design is dedicated to creating elegant, nature-inspired
         landscapes. With a focus on creativity, precision, and sustainability,

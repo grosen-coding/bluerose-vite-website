@@ -11,9 +11,10 @@ const pageVariants = {
 const ContactContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  min-height: 100vh;
+  height: 100%;
+  width: 100%;
   background: linear-gradient(
     to bottom right,
     #16a085,
@@ -23,15 +24,14 @@ const ContactContainer = styled(motion.div)`
   text-align: center;
   padding: 2rem;
 
-  h1 {
-    font-size: 3rem;
+  h2 {
+    font-size: 2.5rem;
     margin-bottom: 1rem;
-  }
-
-  p {
-    font-size: 1.5rem;
-    line-height: 1.8;
-    max-width: 800px;
+    font-weight: 300;
+    text-align: right;
+    display: inline-block;
+    width: 60%;
+    padding: 1rem;
   }
 `;
 
@@ -43,7 +43,7 @@ const Contact = () => {
       animate="animate"
       exit="exit"
     >
-      <h1>Contact Us</h1>
+      <h2>contact</h2>
       <p>
         Reach out to Blue Rose Design for inquiries, consultations, and service
         details. We’re here to help bring your dream landscapes to life!
