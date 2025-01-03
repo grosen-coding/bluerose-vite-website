@@ -37,7 +37,6 @@ const Header = styled(motion.header)`
   width: 100%;
   height: 20vh;
   z-index: 1000; /* Ensures Navbar stays on top */
-  background-color: ${(props) => props.theme.colors.primaryBlue};
   transform: translateY(${(props) => (props.isVisible ? "0" : "-100%")});
   transition: transform 0.8s ease-in-out;
   overflow: hidden;

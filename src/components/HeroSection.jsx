@@ -34,9 +34,7 @@ const HeroContainer = styled(motion.section).withConfig({
   h2 {
     font-size: 2rem;
     font-weight: 300;
-    font-family: "News Gothic", sans-serif;
     letter-spacing: 1.8px;
-    /* padding-top: 5rem; */
   }
 `;
 

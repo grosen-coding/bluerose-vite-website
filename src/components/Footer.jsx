@@ -9,7 +9,7 @@ const FooterContainer = styled.footer`
   text-align: center;
   padding: 0.2rem;
   height: 5vh;
-  width: 100vw;
+  width: 100%;
 `;
 
 const Footer = () => {
