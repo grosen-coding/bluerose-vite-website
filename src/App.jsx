@@ -1,14 +1,9 @@
 import styled from "styled-components";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-} from "react-router-dom";
-import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import { AnimatePresence } from "framer-motion";
-import ScrollToTop from "./components/ScrollToTop"; // Ensure ScrollToTop is imported
+import ScrollToTop from "./components/ScrollToTop";
 import AnimatedLogo from "./components/AnimatedLogo";
 import HeroSection from "./components/HeroSection";
 import About from "./pages/About";
@@ -21,6 +16,7 @@ import theme from "./styles/theme";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import Services from "./pages/Services";
+import PageLoader from "./components/Loader";
 
 const AppContainer = styled.div`
   display: grid;
@@ -50,6 +46,16 @@ const MainWrapper = styled.main`
 
 const App = () => {
   const [isLogoComplete, setLogoComplete] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  // Simulate loader activation on page change
+  const handleNavigation = (callback) => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      callback();
+    }, 1500); // Matches loader duration
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -61,35 +67,79 @@ const App = () => {
           inNavbar={isLogoComplete}
         />
         {isLogoComplete && (
-          <AppContainer>
-            <Header />
-            <Sidebar />
-            <MainWrapper>
-              <AnimatedRoutes isLogoComplete={isLogoComplete} />{" "}
-            </MainWrapper>
-            <Footer />
-          </AppContainer>
+          <>
+            <PageLoader isActive={loading} />
+            <AppContainer>
+              <Header />
+              <Sidebar />
+              <MainWrapper>
+                <AnimatedRoutes handleNavigation={handleNavigation} />
+              </MainWrapper>
+              <Footer />
+            </AppContainer>
+          </>
         )}
       </Router>
     </ThemeProvider>
   );
 };
 
-const AnimatedRoutes = ({ isLogoComplete }) => {
-  const location = useLocation();
-
+const AnimatedRoutes = ({ handleNavigation }) => {
   return (
     <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<HeroSection isVisible={isLogoComplete} />} />{" "}
-        <Route path="/about" element={<About />} />
-        <Route path="/design-process" element={<DesignProcess />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/showcase" element={<Showcase />} />
+      <Routes>
+        <Route path="/" element={<HeroSection />} />
+        <Route
+          path="/about"
+          element={
+            <PageWrapper handleNavigation={handleNavigation}>
+              <About />
+            </PageWrapper>
+          }
+        />
+        <Route
+          path="/design-process"
+          element={
+            <PageWrapper handleNavigation={handleNavigation}>
+              <DesignProcess />
+            </PageWrapper>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <PageWrapper handleNavigation={handleNavigation}>
+              <Contact />
+            </PageWrapper>
+          }
+        />
+        <Route
+          path="/services"
+          element={
+            <PageWrapper handleNavigation={handleNavigation}>
+              <Services />
+            </PageWrapper>
+          }
+        />
+        <Route
+          path="/showcase"
+          element={
+            <PageWrapper handleNavigation={handleNavigation}>
+              <Showcase />
+            </PageWrapper>
+          }
+        />
       </Routes>
     </AnimatePresence>
   );
+};
+
+const PageWrapper = ({ children, handleNavigation }) => {
+  useEffect(() => {
+    handleNavigation(() => {}); // Trigger loader
+  }, [handleNavigation]);
+
+  return <>{children}</>;
 };
 
 export default App;

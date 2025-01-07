@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import Main from "../components/Main";
+import PageLoader from "../components/Loader"; // Assuming the loader component exists
 import styled from "styled-components";
 
 const ServicesContainer = styled.section`
@@ -84,6 +86,20 @@ const ServiceCard = styled.div`
 `;
 
 const Services = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500); // Minimum loader time
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <PageLoader active={isLoading} />;
+  }
+
   return (
     <Main>
       <ServicesContainer aria-labelledby="services">

@@ -1,5 +1,7 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import PageLoader from "../components/Loader"; // Assuming Loader component exists
 
 const pageVariants = {
   initial: { opacity: 0 },
@@ -74,10 +76,24 @@ const ContactContainer = styled(motion.section)`
 `;
 
 const Contact = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500); // Minimum loader duration
+
+    return () => clearTimeout(timer); // Cleanup timeout on component unmount
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     alert("Form submitted!"); // Replace with form submission logic
   };
+
+  if (isLoading) {
+    return <PageLoader active={isLoading} />;
+  }
 
   return (
     <ContactContainer

@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import PageLoader from "../components/Loader"; // Import loader
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const pageVariants = {
@@ -218,9 +219,16 @@ const DesignProcess = () => {
         "Time to wrap up! As your project reaches completion, we conduct a thorough walkthrough to ensure every element is executed to perfection. This final step includes a detailed review of your new outdoor space, as well as guidance on maintenance and care to preserve its beauty. Our relationship doesn’t end here—our passion for landscaping means we are always available to provide support and advice as your landscape matures and flourishes over time.",
     },
   ];
-
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState("right");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const preloadTimeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 500); // Minimum loader time
+    return () => clearTimeout(preloadTimeout);
+  }, []);
 
   const handleNext = () => {
     setDirection("right");
@@ -236,6 +244,10 @@ const DesignProcess = () => {
     setDirection(index > currentIndex ? "right" : "left");
     setCurrentIndex(index);
   };
+
+  if (isLoading) {
+    return <PageLoader active={isLoading} />;
+  }
 
   return (
     <ProcessContainer
@@ -262,33 +274,34 @@ const DesignProcess = () => {
           <FaArrowLeft />
         </Arrow>
         <AnimatePresence mode="wait" custom={direction}>
-          <Card
-            key={currentIndex}
-            variants={{
-              enter: (direction) => ({
-                x: direction === "right" ? "100%" : "-100%",
-                opacity: 0,
-              }),
-              center: { x: 0, opacity: 1, transition: { duration: 0.4 } },
-              exit: (direction) => ({
-                x: direction === "right" ? "-100%" : "100%",
-                opacity: 0,
-                transition: { duration: 0.4 },
-              }),
-            }}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            custom={direction}
-          >
-            <h3>{steps[currentIndex].title}</h3>
-            <p>{steps[currentIndex].description}</p>
-          </Card>
+          {steps[currentIndex] && (
+            <Card
+              key={currentIndex}
+              variants={{
+                enter: (direction) => ({
+                  x: direction === "right" ? "100%" : "-100%",
+                  opacity: 0,
+                }),
+                center: { x: 0, opacity: 1, transition: { duration: 0.4 } },
+                exit: (direction) => ({
+                  x: direction === "right" ? "-100%" : "100%",
+                  opacity: 0,
+                }),
+              }}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              custom={direction}
+            >
+              <h3>{steps[currentIndex].title}</h3>
+              <p>{steps[currentIndex].description}</p>
+            </Card>
+          )}
         </AnimatePresence>
         <Arrow
           className="right"
           onClick={handleNext}
-          disabled={currentIndex === steps.length - 1}
+          disabled={currentIndex >= steps.length - 1}
         >
           <FaArrowRight />
         </Arrow>
@@ -299,7 +312,6 @@ const DesignProcess = () => {
             key={index}
             active={index === currentIndex}
             onClick={() => handleIndicatorClick(index)}
-            aria-label={`Step ${index + 1}: ${steps[index].title}`}
           >
             {index + 1}
           </Indicator>

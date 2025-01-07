@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Main from "../components/Main";
 import Modal from "../components/Modal";
+import PageLoader from "../components/Loader"; // Loader component
 
 const ShowcaseContainer = styled.section`
   display: flex;
@@ -111,6 +112,7 @@ const ShowcaseContainer = styled.section`
 const Showcase = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   const projects = [
     {
@@ -179,6 +181,18 @@ const Showcase = () => {
       ],
     },
   ];
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500); // Minimum loader duration
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <PageLoader active={isLoading} />;
+  }
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0));
