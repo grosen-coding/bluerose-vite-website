@@ -1,54 +1,235 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
 import styled from "styled-components";
+import Main from "../components/Main";
+import Modal from "../components/Modal";
 
-const pageVariants = {
-  initial: { opacity: 0, x: -100 },
-  animate: { opacity: 1, x: 0, transition: { duration: 0.5 } },
-  exit: { opacity: 0, x: 100, transition: { duration: 0.5 } },
-};
-
-// Styled Components
-const ShowcaseContainer = styled(motion.div)`
+const ShowcaseContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(
-    to bottom right,
-    #8e44ad,
-    #9b59b6
-  ); /* Temporary color */
-  color: white;
-  text-align: center;
+  justify-content: center;
   padding: 2rem;
+  width: 100%;
 
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+  .slider {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+      max-width: 100%;
+    }
+
+    .slider-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .project {
+      flex: 0 0 33.33%;
+      max-width: 33.33%;
+      padding: 1rem;
+
+      @media (max-width: 768px) {
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
+
+      @media (max-width: 480px) {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+
+      position: relative;
+      overflow: hidden;
+      background-color: ${(props) => props.theme.colors.lightGray};
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transform: scale(1);
+      transition: transform 0.3s ease-in-out;
+
+      &:hover {
+        transform: scale(1.05);
+        z-index: 10;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .project-title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: ${(props) => props.theme.colors.accentWhite};
+        text-align: center;
+        padding: 0.5rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+    }
   }
 
-  p {
-    font-size: 1.5rem;
-    line-height: 1.8;
-    max-width: 800px;
+  .slider-controls {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 1rem;
+
+    button {
+      background: ${(props) => props.theme.colors.primaryBlue};
+      color: ${(props) => props.theme.colors.accentWhite};
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease-in-out;
+
+      &:hover {
+        background: ${(props) => props.theme.colors.accentGreen};
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
   }
 `;
 
 const Showcase = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const projects = [
+    {
+      id: 1,
+      title: "Project 1",
+      images: [
+        "https://picsum.photos/600/400?random=1",
+        "https://picsum.photos/600/400?random=2",
+        "https://picsum.photos/600/400?random=5",
+        "https://picsum.photos/600/400?random=6",
+        "https://picsum.photos/600/400?random=7",
+        "https://picsum.photos/600/400?random=8",
+        "https://picsum.photos/600/400?random=9",
+      ],
+    },
+    {
+      id: 2,
+      title: "Project 2",
+      images: [
+        "https://picsum.photos/600/400?random=3",
+        "https://picsum.photos/600/400?random=4",
+        "https://picsum.photos/600/400?random=10",
+        "https://picsum.photos/600/400?random=11",
+        "https://picsum.photos/600/400?random=12",
+        "https://picsum.photos/600/400?random=13",
+        "https://picsum.photos/600/400?random=14",
+      ],
+    },
+    {
+      id: 3,
+      title: "Project 3",
+      images: [
+        "https://picsum.photos/600/400?random=15",
+        "https://picsum.photos/600/400?random=16",
+        "https://picsum.photos/600/400?random=17",
+        "https://picsum.photos/600/400?random=18",
+        "https://picsum.photos/600/400?random=19",
+        "https://picsum.photos/600/400?random=20",
+        "https://picsum.photos/600/400?random=21",
+      ],
+    },
+    {
+      id: 4,
+      title: "Project 4",
+      images: [
+        "https://picsum.photos/600/400?random=22",
+        "https://picsum.photos/600/400?random=23",
+        "https://picsum.photos/600/400?random=24",
+        "https://picsum.photos/600/400?random=25",
+        "https://picsum.photos/600/400?random=26",
+        "https://picsum.photos/600/400?random=27",
+        "https://picsum.photos/600/400?random=28",
+      ],
+    },
+    {
+      id: 5,
+      title: "Project 5",
+      images: [
+        "https://picsum.photos/600/400?random=29",
+        "https://picsum.photos/600/400?random=30",
+        "https://picsum.photos/600/400?random=31",
+        "https://picsum.photos/600/400?random=32",
+        "https://picsum.photos/600/400?random=33",
+        "https://picsum.photos/600/400?random=34",
+        "https://picsum.photos/600/400?random=35",
+      ],
+    },
+  ];
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      Math.min(prevIndex + 1, projects.length - 3)
+    );
+  };
+
   return (
-    <ShowcaseContainer
-      variants={pageVariants}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-    >
-      <h1>Our Showcase</h1>
-      <p>
-        Explore some of our favorite projects and landscape transformations. At
-        Blue Rose Design, we create outdoor spaces that inspire and elevate.
-      </p>
-    </ShowcaseContainer>
+    <Main>
+      <ShowcaseContainer>
+        <div className="slider">
+          <div
+            className="slider-track"
+            style={{
+              transform: `translateX(-${currentIndex * 33.33}%)`,
+            }}
+          >
+            {projects.map((project) => (
+              <div
+                key={project.id}
+                className="project"
+                onClick={() => setSelectedProject(project)}
+              >
+                <img src={project.images[0]} alt={project.title} />
+                <div className="project-title">{project.title}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="slider-controls">
+          <button onClick={handlePrev} disabled={currentIndex === 0}>
+            Previous
+          </button>
+          <button
+            onClick={handleNext}
+            disabled={currentIndex >= projects.length - 3}
+          >
+            Next
+          </button>
+        </div>
+        {selectedProject && (
+          <Modal
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+          />
+        )}
+      </ShowcaseContainer>
+    </Main>
   );
 };
 

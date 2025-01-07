@@ -3,51 +3,117 @@ import styled from "styled-components";
 
 const pageVariants = {
   initial: { opacity: 0 },
-  animate: { opacity: 1, transition: { duration: 0.4 } },
-  exit: { opacity: 0, transition: { duration: 0.4 } },
+  animate: { opacity: 1, transition: { duration: 0.3 } },
+  exit: { opacity: 0, transition: { duration: 0.3 } },
 };
 
 // Styled Components
-const ContactContainer = styled(motion.div)`
+const ContactContainer = styled(motion.section)`
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 95vh;
   width: 100%;
-  background: linear-gradient(
-    to bottom right,
-    #16a085,
-    #1abc9c
-  ); /* Temporary color */
-  color: white;
+  color: ${(props) => props.theme.colors.accentWhite};
   text-align: center;
   padding: 2rem;
+  background-color: ${(props) => props.theme.colors.backgroundGreen};
 
-  h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    font-weight: 300;
-    text-align: right;
-    display: inline-block;
-    width: 60%;
-    padding: 1rem;
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+
+    label {
+      margin-top: 1rem;
+      text-align: left;
+      width: 100%;
+      color: ${(props) => props.theme.colors.accentWhite};
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-top: 0.5rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    textarea {
+      height: 150px;
+      resize: none;
+    }
+
+    button {
+      margin-top: 1rem;
+      padding: 0.8rem 2rem;
+      background-color: ${(props) => props.theme.colors.primaryBlue};
+      color: ${(props) => props.theme.colors.accentWhite};
+      border: none;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: ${(props) => props.theme.colors.accentGreen};
+      }
+    }
   }
 `;
 
 const Contact = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Form submitted!"); // Replace with form submission logic
+  };
+
   return (
     <ContactContainer
       variants={pageVariants}
       initial="initial"
       animate="animate"
       exit="exit"
+      aria-labelledby="contact-title"
     >
-      <h2>contact</h2>
       <p>
         Reach out to Blue Rose Design for inquiries, consultations, and service
         details. We’re here to help bring your dream landscapes to life!
       </p>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Your Name"
+          required
+        />
+
+        <label htmlFor="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Your Email"
+          required
+        />
+
+        <label htmlFor="message">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          placeholder="Your Message"
+          required
+        />
+
+        <button type="submit">Send</button>
+      </form>
     </ContactContainer>
   );
 };

@@ -1,57 +1,49 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const LogoContainer = styled.div.withConfig({
-  shouldForwardProp: (prop) => prop !== "hasMoved" && prop !== "inNavbar",
+  shouldForwardProp: (prop) => prop !== "isFinal",
 })`
-  position: fixed;
-  top: ${(props) => (props.inNavbar ? "0" : "50%")};
-  left: ${(props) => (props.inNavbar ? "15%" : "50%")};
-  transform: translate(-50%, ${(props) => (props.inNavbar ? "0" : "-50%")})
-    scale(${(props) => (props.inNavbar ? 1 : 1)});
-  transition: all 1.5s ease-in;
+  position: absolute;
+  top: ${(props) => (props.isFinal ? "0" : "50%")};
+  left: ${(props) => (props.isFinal ? "0" : "50%")};
+  transform: translate(5%, ${(props) => (props.isFinal ? "0" : "-50%")});
+  transition: all 1.5s ease-in-out;
   z-index: 2000;
-  width: ${(props) => (props.inNavbar ? "250px" : "500px")};
-  height: ${(props) => (props.inNavbar ? "250px" : "500px")};
+  width: ${(props) => (props.isFinal ? "15%" : "50%")};
+  height: auto;
+  border-radius: 50%;
 `;
 
-const AnimatedLogo = ({ onComplete, inNavbar }) => {
-  const [animationComplete, setAnimationComplete] = useState(false);
-  const svgRef = useRef(null);
+const AnimatedLogo = ({ onComplete }) => {
+  const [isFinal, setIsFinal] = useState(false);
 
   useEffect(() => {
-    const svgObject = svgRef.current;
+    // Wait for the SVGator animation duration before transitioning
+    const animationDuration = 6000; // Adjust based on your SVGator animation duration
+    const timer = setTimeout(() => {
+      setIsFinal(true); // Trigger the scaling and moving transition
+      if (onComplete) onComplete();
+    }, animationDuration);
 
-    if (svgObject) {
-      svgObject.addEventListener("load", () => {
-        const svgDoc = svgObject.contentDocument;
-        if (svgDoc) {
-          const svgRoot = svgDoc.documentElement;
-          if (svgRoot && typeof svgRoot.startAnimation === "function") {
-            svgRoot.startAnimation();
-          }
-        }
-
-        // Animation completes after 6 seconds
-        setTimeout(() => {
-          setAnimationComplete(true);
-          if (onComplete) onComplete();
-        }, 6000);
-      });
-    }
+    return () => clearTimeout(timer); // Cleanup timeout on component unmount
   }, [onComplete]);
 
   return (
-    <LogoContainer inNavbar={animationComplete && inNavbar}>
+    <LogoContainer isFinal={isFinal}>
       <object
-        ref={svgRef}
         type="image/svg+xml"
         data="/logo.svg"
         aria-label="Blue Rose Design Logo"
         style={{
           width: "100%",
           height: "100%",
+          pointerEvents: "none",
+          borderRadius: "50%",
+          boxShadow: isFinal ? "0 0 20px rgba(0, 0, 0, 0.6)" : "none",
+          // boxShadow: "0 0 20px rgba(0, 0, 0, 0.6)",
+          transition: "all 1.5s ease-in-out",
         }}
       >
         Your browser does not support SVGs.
@@ -62,7 +54,6 @@ const AnimatedLogo = ({ onComplete, inNavbar }) => {
 
 AnimatedLogo.propTypes = {
   onComplete: PropTypes.func.isRequired,
-  inNavbar: PropTypes.bool.isRequired,
 };
 
 export default AnimatedLogo;

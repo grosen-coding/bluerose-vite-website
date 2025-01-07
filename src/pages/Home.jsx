@@ -1,10 +1,14 @@
 import HeroSection from "../components/HeroSection";
 
+// Main Home Page
 const Home = () => {
   return (
-    <div>
+    <main aria-label="Home Page">
+      {/* Hero Section */}
       <HeroSection isVisible={true} />
-    </div>
+
+      {/* Additional Sections can be added here */}
+    </main>
   );
 };
 

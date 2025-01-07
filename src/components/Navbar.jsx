@@ -13,7 +13,7 @@ const NavContainer = styled.nav`
 `;
 
 const LogoSpace = styled.div`
-  width: 23%;
+  width: 220px;
   height: 100%;
 `;
 
@@ -22,14 +22,14 @@ const BusinessName = styled(Link)`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  width: 35%;
+  width: 40%;
   height: auto;
   font-size: 1.8rem;
   text-decoration: none;
   color: white;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
-  padding-top: 1.9rem;
+  /* padding-top: 1rem; */
   padding-left: 0;
   margin-left: 0;
 

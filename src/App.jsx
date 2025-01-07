@@ -7,9 +7,9 @@ import {
 } from "react-router-dom";
 import { useState } from "react";
 import { ThemeProvider } from "styled-components";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
+import ScrollToTop from "./components/ScrollToTop"; // Ensure ScrollToTop is imported
 import AnimatedLogo from "./components/AnimatedLogo";
-import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -18,69 +18,78 @@ import Showcase from "./pages/Showcase";
 import Footer from "./components/Footer";
 import GlobalStyles from "./styles/GlobalStyles";
 import theme from "./styles/theme";
+import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
+import Services from "./pages/Services";
 
 const AppContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "nav main"
+    "footer footer";
+  grid-template-columns: 10% 1fr;
+  grid-template-rows: 10% 1fr 5%;
   height: 100vh;
+  width: 100vw;
+
+  @media (max-width: 768px) {
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+  }
 `;
 
-const ContentWrapper = styled.main`
-  flex: 1; /* Ensures main content fills available space */
-  padding-top: 150px; /* Pushes content below the Navbar */
-`;
-
-const Header = styled(motion.header)`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 20vh;
-  z-index: 1000; /* Ensures Navbar stays on top */
-  transform: translateY(${(props) => (props.isVisible ? "0" : "-100%")});
-  transition: transform 0.8s ease-in-out;
+const MainWrapper = styled.main`
+  grid-area: main;
   overflow: hidden;
 `;
 
-function App() {
-  const [isLogoInNavbar, setLogoInNavbar] = useState(false);
+const App = () => {
+  const [isLogoComplete, setLogoComplete] = useState(false);
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Router>
-        <AppContainer>
-          <AnimatedLogo
-            onComplete={() => setLogoInNavbar(true)}
-            inNavbar={isLogoInNavbar}
-          />
-          <Header isVisible={isLogoInNavbar}>
-            {isLogoInNavbar && <Navbar />}
-          </Header>
-          <ContentWrapper>
-            <AnimatedRoutes isLogoInNavbar={isLogoInNavbar} />
-          </ContentWrapper>
-          <Footer />
-        </AppContainer>
+        <ScrollToTop />
+        <AnimatedLogo
+          onComplete={() => setLogoComplete(true)}
+          inNavbar={isLogoComplete}
+        />
+        {isLogoComplete && (
+          <AppContainer>
+            <Header />
+            <Sidebar />
+            <MainWrapper>
+              <AnimatedRoutes isLogoComplete={isLogoComplete} />{" "}
+            </MainWrapper>
+            <Footer />
+          </AppContainer>
+        )}
       </Router>
     </ThemeProvider>
   );
-}
+};
 
-function AnimatedRoutes({ isLogoInNavbar }) {
+const AnimatedRoutes = ({ isLogoComplete }) => {
   const location = useLocation();
 
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<HeroSection isVisible={isLogoInNavbar} />} />
+        <Route path="/" element={<HeroSection isVisible={isLogoComplete} />} />{" "}
         <Route path="/about" element={<About />} />
         <Route path="/design-process" element={<DesignProcess />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/services" element={<Services />} />
         <Route path="/showcase" element={<Showcase />} />
       </Routes>
     </AnimatePresence>
   );
-}
+};
 
 export default App;

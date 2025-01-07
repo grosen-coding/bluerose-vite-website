@@ -4,38 +4,32 @@ import { motion } from "framer-motion";
 
 // Animation Variants
 const containerVariants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 1 },
   visible: {
     opacity: 1,
-    transition: { duration: 1.5, when: "beforeChildren", staggerChildren: 0.3 },
+    transition: { duration: 1.5 },
   },
 };
 
 const textVariants = {
-  hidden: { opacity: 0, y: 0 },
+  hidden: { opacity: 1, y: 0 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
 // Styled Components
 const HeroContainer = styled(motion.section).withConfig({
-  shouldForwardProp: (prop) => prop !== "isVisible",
+  shouldForwardProp: (prop) => prop !== "isVisible" && prop !== "onComplete",
 })`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 100%;
   background-size: cover;
   background-position: center;
-  text-align: center;
-  color: white;
-  background-color: black;
-
-  h2 {
-    font-size: 2rem;
-    font-weight: 300;
-    letter-spacing: 1.8px;
-  }
+  /* text-align: center; */
+  /* color: white; */
 `;
 
 const HeroSection = ({ isVisible, onComplete }) => {
