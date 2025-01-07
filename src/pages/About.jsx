@@ -4,7 +4,7 @@ import styled from "styled-components";
 const AboutContainer = styled.section`
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   height: 100%;
   gap: 2rem;
@@ -26,6 +26,7 @@ const TextColumn = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: -3rem;
 
   p {
     font-size: 1rem;

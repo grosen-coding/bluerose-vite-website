@@ -19,6 +19,7 @@ const GlobalStyles = createGlobalStyle`
       height: 100%;
       width: 100%;
       padding: 3rem;
+      margin-top: 4rem;
     }
 
   h1 {

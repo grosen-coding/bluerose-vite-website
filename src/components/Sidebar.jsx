@@ -30,16 +30,16 @@ const NavBar = styled(motion.nav)`
 
   a {
     font-size: 2.3rem;
-    color: white;
+    color: ${(props) => props.theme.colors.titleColor};
     opacity: 0.8;
-    padding: 0.4rem 0;
+    padding: 0.6rem 0;
     text-align: center;
     font-weight: 600;
     text-decoration: none;
     position: relative;
 
     &:hover {
-      color: ${(props) => props.theme.colors.titleColor};
+      color: ${(props) => props.theme.colors.accentGreen};
       svg {
         opacity: 0;
       }
@@ -50,10 +50,13 @@ const NavBar = styled(motion.nav)`
 
     &:after {
       content: attr(aria-label);
-      font-size: 1rem;
+      font-size: 1.1rem;
       position: absolute;
       top: 50%;
       left: 50%;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
       transform: translate(-50%, -50%);
       opacity: 0;
       transition: all 0.3s ease-out;

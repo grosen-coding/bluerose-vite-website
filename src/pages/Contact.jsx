@@ -20,6 +20,12 @@ const ContactContainer = styled(motion.section)`
   padding: 2rem;
   background-color: ${(props) => props.theme.colors.backgroundGreen};
 
+  p {
+    font-size: 1.2rem;
+    max-width: 70%;
+    margin-bottom: 2rem;
+  }
+
   form {
     display: flex;
     flex-direction: column;

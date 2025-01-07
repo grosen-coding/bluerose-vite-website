@@ -4,31 +4,49 @@ import { motion } from "framer-motion";
 
 const HeaderContainer = styled(motion.header)`
   position: fixed;
-  width: 100%;
+  top: 0;
+  right: 0;
+  width: 90%;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Space for the page heading */
+  justify-content: space-between;
   z-index: 1000;
-  background-color: ${(props) => props.theme.colors.deepBlack};
-  padding: 1rem;
-  padding-top: 0;
-
+  background-color: rgba(0, 0, 0, 1);
+  padding-right: 2rem;
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
     flex-direction: column;
-    /* padding: 0.5rem; */
+  }
+`;
+
+const BusinessName = styled.div`
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 6rem;
+  width: 70%;
+  cursor: crosshair;
+
+  @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+    text-align: center;
+    align-items: center;
   }
 
   h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
     color: ${(props) => props.theme.colors.primaryBlue};
     font-family: "Playfair Display", serif;
     font-weight: 700;
+    padding: 0;
     margin: 0;
+    line-height: 1.2;
+    padding-top: 1rem;
 
     span {
       color: ${(props) => props.theme.colors.accentWhite};
       font-weight: 300;
-      font-size: 2.8rem;
+      font-size: 2.5rem;
     }
 
     @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
@@ -40,10 +58,13 @@ const HeaderContainer = styled(motion.header)`
     }
   }
 
-  h4 {
+  h2 {
     font-size: 1.1rem;
     font-weight: 300;
     color: ${(props) => props.theme.colors.accentGreen};
+    margin: 0;
+    padding: 0;
+    padding-bottom: 1rem;
 
     span {
       font-size: 1.3rem;
@@ -56,28 +77,12 @@ const HeaderContainer = styled(motion.header)`
   }
 `;
 
-const BusinessName = styled.h1`
-  text-decoration: none;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Keep alignment consistent */
-  justify-content: center;
-  width: 70%;
-  cursor: crosshair;
-
-  @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
-    text-align: center;
-    align-items: center;
-  }
-`;
-
 const PageHeading = styled(motion.h2)`
   font-size: 2.5rem;
   color: ${(props) => props.theme.colors.titleColor2};
   font-weight: 400;
   margin: 0;
-  align-self: flex-end; /* Align to the top-right corner */
+  /* align-self: flex-start; */
   padding-right: 1rem;
   width: 35%;
 
@@ -110,9 +115,9 @@ const Header = () => {
         <h1>
           BLUE ROSE <span>DESIGN</span>
         </h1>
-        <h4>
+        <h2>
           Landscape Design <span>|</span> Project Management
-        </h4>
+        </h2>
       </BusinessName>
       <PageHeading
         key={location.pathname}

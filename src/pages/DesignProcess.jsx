@@ -18,7 +18,7 @@ const ProcessContainer = styled(motion.section)`
   width: 100%;
   height: 100%;
   color: ${(props) => props.theme.colors.darkGreen};
-  padding: 3rem 2rem 2rem;
+  padding: 0 2rem 2rem;
   text-align: center;
 
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
