@@ -29,7 +29,7 @@ const AppContainer = styled.div`
     "nav main"
     "footer footer";
   grid-template-columns: 10% 1fr;
-  grid-template-rows: 10% 1fr 5%;
+  grid-template-rows: 10% 1fr 4%;
   height: 100vh;
   width: 100vw;
 

@@ -17,6 +17,8 @@ const GlobalStyles = createGlobalStyle`
     section {
       background-color: ${(props) => props.theme.colors.backgroundGreen};
       height: 100%;
+      width: 100%;
+      padding: 3rem;
     }
 
   h1 {
@@ -27,9 +29,8 @@ const GlobalStyles = createGlobalStyle`
 
   h2, h3, h4, h5, h6{
     margin: 0;
-    /* font-family: 'News Gothic', sans-serif; */
-        font-family: 'Montserrat', sans-serif;
-            color: ${(props) => props.theme.colors.titleColor};
+    font-family: 'Montserrat', sans-serif;
+    color: ${(props) => props.theme.colors.titleColor};
     letter-spacing: 1.5px;
   }
 
@@ -38,18 +39,7 @@ const GlobalStyles = createGlobalStyle`
       margin-bottom: 1rem;
       font-weight: 300;
       text-align: right;
-      display: flex;
-      justify-content: flex-end;
-      width: 80%;
-      padding: 1rem;
-  }
-
-  p {
-        font-size: 1.2rem;
-    line-height: 1.8;
-    max-width: 800px;
-    font-weight: 300;
-
+      padding: 1rem 0;
   }
 
   a {

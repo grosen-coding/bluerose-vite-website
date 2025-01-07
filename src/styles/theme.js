@@ -8,15 +8,19 @@ const theme = {
     accentWhite: "#FFFFFF", // Contrast white (for text or highlights)
     accentGreen: "#b6c199", // Green accent
     backgroundGreen: "#2e3b2e", // Green background
+    backgroundGreenLight: "rgba(68, 89, 68, 0.75)", // Light green background
     titleColor: "#c79f7a", // Title color
+    titleColor2: "rgb(251, 209, 125)", // Title color 2
+    lightGrey: "#dcd7d7", // Light grey
 
     //         $dark-gray: #4d4d4e; // Sidebar and icon base color
-    // $light-gray: #c79f7a; // Accent color for social icons
-    // $white: #FFFFFF; // For text or backgrounds
+    // $light-gray:rgb(251, 209, 125); // Accent color for social icons
+    // $white:#dcd7d7; // For text or backgrounds
     // $black: #000000; // Primary text color
     // $hover-blue: #5ED4F4; // React icon color
-    // $angular-red: #DD0031; // Angular icon
+    // $angular-red:rgb(46, 59, 46); // Angular icon
     // $css-blue: #28A4D9; // CSS icon
+
     // $html-orange: #F06529; // HTML icon
     // $js-yellow: #EFD81D; // JavaScript icon
     // $git-red: #EC4D28; // Git icon

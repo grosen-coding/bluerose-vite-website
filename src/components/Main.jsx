@@ -5,6 +5,7 @@ import styled from "styled-components";
 const MainContent = styled(motion.main)`
   padding: 2rem;
   width: 100%;
+  height: 100%;
   margin-top: 6rem; /* Adjust to avoid overlap with Header */
   color: ${(props) => props.theme.colors.accentWhite};
   background-color: ${(props) =>

@@ -3,12 +3,13 @@ import styled from "styled-components";
 import Main from "../components/Main";
 import Modal from "../components/Modal";
 
-const ShowcaseContainer = styled.div`
+const ShowcaseContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 2rem;
+  /* justify-content: center; */
+  /* height: 100%; */
+  padding-top: 3rem;
   width: 100%;
 
   .slider {

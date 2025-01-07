@@ -1,63 +1,82 @@
 import Main from "../components/Main";
 import styled from "styled-components";
 
-const ServicesContainer = styled.div`
+const ServicesContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 100%;
-  /* height: 100%; */
-  /* padding: 2rem; */
 
   @media (max-width: 768px) {
     padding: 1rem;
   }
 
-  .services-wrapper {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    /* margin-top: 2rem; */
-
-    @media (max-width: 768px) {
-      flex-direction: column;
-      align-items: center;
-    }
+  h1 {
+    font-size: 2.5rem;
+    color: ${(props) => props.theme.colors.primaryBlue};
+    margin-bottom: 1.5rem;
+    text-align: center;
   }
 
-  .service-card {
-    background-color: ${(props) => props.theme.colors.backgroundWhite};
-    border: 1px solid ${(props) => props.theme.colors.lightGray};
-    border-radius: 8px;
-    padding: 1.5rem;
-    width: 40%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s ease-in-out;
+  .services-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+`;
+
+const ServiceCard = styled.div`
+  background-color: ${(props) => props.theme.colors.backgroundWhite};
+  border: 1px solid ${(props) => props.theme.colors.lightGrey};
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: all 0.3s ease-in-out;
+  opacity: 0.9;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 3rem rgba(0, 0, 0, 0.9);
+    opacity: 1;
+    background-color: ${(props) => props.theme.colors.backgroundGreenLight};
+  }
+
+  h3 {
+    font-size: 1.8rem;
+    color: ${(props) => props.theme.colors.titleColor};
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1rem;
+    color: ${(props) => props.theme.colors.textGrey};
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .learn-more {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    color: ${(props) => props.theme.colors.accentGreen};
+    text-decoration: none;
+    border: 1px solid ${(props) => props.theme.colors.accentGreen};
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition:
+      background-color 0.3s ease-in-out,
+      color 0.3s ease-in-out;
 
     &:hover {
-      transform: translateY(-10px);
-    }
-
-    h3 {
-      font-size: 1.8rem;
-      color: ${(props) => props.theme.colors.primaryBlue};
-      margin-bottom: 1rem;
-
-      @media (max-width: 768px) {
-        font-size: 1.6rem;
-      }
-    }
-
-    p {
-      font-size: 1rem;
-      color: ${(props) => props.theme.colors.textGrey};
-      line-height: 1.6;
-
-      @media (max-width: 768px) {
-        font-size: 0.9rem;
-      }
+      background-color: ${(props) => props.theme.colors.accentGreen};
+      color: ${(props) => props.theme.colors.backgroundGreen};
     }
   }
 `;
@@ -65,32 +84,33 @@ const ServicesContainer = styled.div`
 const Services = () => {
   return (
     <Main>
-      <ServicesContainer aria-labelledby="services-heading">
+      <ServicesContainer aria-labelledby="services">
         <div className="services-wrapper">
-          <div className="service-card">
+          <ServiceCard>
             <h3>Landscape Design</h3>
             <p>
-              At Blue Rose Design, we are passionate about creating custom and
-              unique landscape designs inspired by our deep love of nature. Our
-              7-step design process ensures accuracy, detail, and a seamless
-              experience for our clients. We specialize in incorporating natural
-              elements like waterfalls and stonework to bring a timeless beauty
-              to your outdoor space. Every design is crafted with precision,
-              artistry, and a commitment to sustainability.
+              Transform your outdoor space into a masterpiece with our custom
+              landscape design services. We specialize in blending natural
+              beauty with functional design, creating unique landscapes tailored
+              to your vision. From waterfalls to natural stonework, every
+              element is carefully planned to bring your dream to life.
             </p>
-          </div>
-          <div className="service-card">
+            <a href="/design-process" className="learn-more">
+              Learn More
+            </a>
+          </ServiceCard>
+          <ServiceCard>
             <h3>Project Management</h3>
             <p>
-              Adding value to our designs, we offer comprehensive project
-              management to bring every aspect of our vision to life. By working
-              with top-tier contractors, we ensure that every detail of your
-              project is executed with precision and to the highest standards.
-              From planning to completion, we meticulously oversee each phase to
-              ensure your project aligns with the Blue Rose Design philosophy of
-              excellence and attention to detail.
+              Ensure every detail of your landscape design is brought to life
+              with precision and excellence. Our project management services
+              oversee every step, from concept to completion, working with
+              top-tier contractors to execute designs to the highest standards.
             </p>
-          </div>
+            <a href="/contact" className="learn-more">
+              Get Started
+            </a>
+          </ServiceCard>
         </div>
       </ServicesContainer>
     </Main>

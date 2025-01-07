@@ -31,7 +31,7 @@ const NavBar = styled(motion.nav)`
   a {
     font-size: 2.3rem;
     color: white;
-    opacity: 0.7;
+    opacity: 0.8;
     padding: 0.4rem 0;
     text-align: center;
     font-weight: 600;
