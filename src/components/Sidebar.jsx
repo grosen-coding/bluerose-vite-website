@@ -11,7 +11,6 @@ import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-// Styled Components
 const NavBar = styled(motion.nav)`
   background: rgba(0, 0, 0, 0.6);
   width: 10%;
@@ -24,8 +23,8 @@ const NavBar = styled(motion.nav)`
   flex-direction: column;
   padding-bottom: 4rem;
 
-  @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
-    width: 20%;
+  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+    display: none; /* Hide on mobile view */
   }
 
   a {

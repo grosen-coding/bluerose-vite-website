@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { AnimatePresence } from "framer-motion";
 import ScrollToTop from "./components/ScrollToTop";
@@ -48,11 +48,10 @@ const App = () => {
   const [isLogoComplete, setLogoComplete] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  // Simulate loader activation on page change
   const handleNavigation = (callback) => {
-    setLoading(true);
+    setLoading(true); // Activate loader
     setTimeout(() => {
-      setLoading(false);
+      setLoading(false); // Deactivate loader after minimum duration
       callback();
     }, 1500); // Matches loader duration
   };
@@ -68,7 +67,7 @@ const App = () => {
         />
         {isLogoComplete && (
           <>
-            <PageLoader isActive={loading} />
+            <PageLoader active={loading} />
             <AppContainer>
               <Header />
               <Sidebar />
@@ -135,8 +134,10 @@ const AnimatedRoutes = ({ handleNavigation }) => {
 };
 
 const PageWrapper = ({ children, handleNavigation }) => {
-  useEffect(() => {
-    handleNavigation(() => {}); // Trigger loader
+  useState(() => {
+    if (handleNavigation) {
+      handleNavigation(() => {}); // Trigger navigation logic
+    }
   }, [handleNavigation]);
 
   return <>{children}</>;

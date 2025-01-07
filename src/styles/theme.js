@@ -12,25 +12,9 @@ const theme = {
     titleColor: "#c79f7a", // Title color
     titleColor2: "rgb(251, 209, 125)", // Title color 2
     lightGrey: "#dcd7d7", // Light grey
-
-    //         $dark-gray: #4d4d4e; // Sidebar and icon base color
-    // $light-gray:rgb(251, 209, 125); // Accent color for social icons
-    // $white:#dcd7d7; // For text or backgrounds
-    // $black: #000000; // Primary text color
-    // $hover-blue: #5ED4F4; // React icon color
-    // $angular-red:rgb(46, 59, 46); // Angular icon
-    // $css-blue: #28A4D9; // CSS icon
-
-    // $html-orange: #F06529; // HTML icon
-    // $js-yellow: #EFD81D; // JavaScript icon
-    // $git-red: #EC4D28; // Git icon
-    // $light-green: #8BC34A; // Light green
-    // $green-grey: #b6c199; // Green grey
-    // $dark-green: ; // Dark green
-    // $primary-green: ; // Primary green
   },
   breakpoints: {
-    mobile: "380px",
+    mobile: "580px",
     tablet: "768px",
     desktop: "1024px",
     largeDesktop: "1440px",

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import styled from "styled-components";
 import Main from "../components/Main";
 import Modal from "../components/Modal";
@@ -114,81 +114,99 @@ const Showcase = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
-  const projects = [
-    {
-      id: 1,
-      title: "Project 1",
-      images: [
-        "https://picsum.photos/600/400?random=1",
-        "https://picsum.photos/600/400?random=2",
-        "https://picsum.photos/600/400?random=5",
-        "https://picsum.photos/600/400?random=6",
-        "https://picsum.photos/600/400?random=7",
-        "https://picsum.photos/600/400?random=8",
-        "https://picsum.photos/600/400?random=9",
-      ],
-    },
-    {
-      id: 2,
-      title: "Project 2",
-      images: [
-        "https://picsum.photos/600/400?random=3",
-        "https://picsum.photos/600/400?random=4",
-        "https://picsum.photos/600/400?random=10",
-        "https://picsum.photos/600/400?random=11",
-        "https://picsum.photos/600/400?random=12",
-        "https://picsum.photos/600/400?random=13",
-        "https://picsum.photos/600/400?random=14",
-      ],
-    },
-    {
-      id: 3,
-      title: "Project 3",
-      images: [
-        "https://picsum.photos/600/400?random=15",
-        "https://picsum.photos/600/400?random=16",
-        "https://picsum.photos/600/400?random=17",
-        "https://picsum.photos/600/400?random=18",
-        "https://picsum.photos/600/400?random=19",
-        "https://picsum.photos/600/400?random=20",
-        "https://picsum.photos/600/400?random=21",
-      ],
-    },
-    {
-      id: 4,
-      title: "Project 4",
-      images: [
-        "https://picsum.photos/600/400?random=22",
-        "https://picsum.photos/600/400?random=23",
-        "https://picsum.photos/600/400?random=24",
-        "https://picsum.photos/600/400?random=25",
-        "https://picsum.photos/600/400?random=26",
-        "https://picsum.photos/600/400?random=27",
-        "https://picsum.photos/600/400?random=28",
-      ],
-    },
-    {
-      id: 5,
-      title: "Project 5",
-      images: [
-        "https://picsum.photos/600/400?random=29",
-        "https://picsum.photos/600/400?random=30",
-        "https://picsum.photos/600/400?random=31",
-        "https://picsum.photos/600/400?random=32",
-        "https://picsum.photos/600/400?random=33",
-        "https://picsum.photos/600/400?random=34",
-        "https://picsum.photos/600/400?random=35",
-      ],
-    },
-  ];
+  const projects = useMemo(
+    () => [
+      {
+        id: 1,
+        title: "Project 1",
+        images: [
+          "https://picsum.photos/600/400?random=1",
+          "https://picsum.photos/600/400?random=2",
+          "https://picsum.photos/600/400?random=5",
+          "https://picsum.photos/600/400?random=6",
+          "https://picsum.photos/600/400?random=7",
+          "https://picsum.photos/600/400?random=8",
+          "https://picsum.photos/600/400?random=9",
+        ],
+      },
+      {
+        id: 2,
+        title: "Project 2",
+        images: [
+          "https://picsum.photos/600/400?random=3",
+          "https://picsum.photos/600/400?random=4",
+          "https://picsum.photos/600/400?random=10",
+          "https://picsum.photos/600/400?random=11",
+          "https://picsum.photos/600/400?random=12",
+          "https://picsum.photos/600/400?random=13",
+          "https://picsum.photos/600/400?random=14",
+        ],
+      },
+      {
+        id: 3,
+        title: "Project 3",
+        images: [
+          "https://picsum.photos/600/400?random=15",
+          "https://picsum.photos/600/400?random=16",
+          "https://picsum.photos/600/400?random=17",
+          "https://picsum.photos/600/400?random=18",
+          "https://picsum.photos/600/400?random=19",
+          "https://picsum.photos/600/400?random=20",
+          "https://picsum.photos/600/400?random=21",
+        ],
+      },
+      {
+        id: 4,
+        title: "Project 4",
+        images: [
+          "https://picsum.photos/600/400?random=22",
+          "https://picsum.photos/600/400?random=23",
+          "https://picsum.photos/600/400?random=24",
+          "https://picsum.photos/600/400?random=25",
+          "https://picsum.photos/600/400?random=26",
+          "https://picsum.photos/600/400?random=27",
+          "https://picsum.photos/600/400?random=28",
+        ],
+      },
+      {
+        id: 5,
+        title: "Project 5",
+        images: [
+          "https://picsum.photos/600/400?random=29",
+          "https://picsum.photos/600/400?random=30",
+          "https://picsum.photos/600/400?random=31",
+          "https://picsum.photos/600/400?random=32",
+          "https://picsum.photos/600/400?random=33",
+          "https://picsum.photos/600/400?random=34",
+          "https://picsum.photos/600/400?random=35",
+        ],
+      },
+    ],
+    []
+  );
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 500); // Minimum loader duration
+    const images = projects.flatMap((project) => project.images);
+    let loadedImages = 0;
 
-    return () => clearTimeout(timer);
-  }, []);
+    const handleImageLoad = () => {
+      loadedImages++;
+      if (loadedImages === images.length) {
+        setTimeout(() => setIsLoading(false), 500); // Minimum loader duration
+      }
+    };
+
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = handleImageLoad;
+      img.onerror = handleImageLoad; // Handle failed image loads
+    });
+
+    return () => {
+      // Cleanup (if necessary)
+    };
+  }, [projects]);
 
   if (isLoading) {
     return <PageLoader active={isLoading} />;

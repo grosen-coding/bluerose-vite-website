@@ -2,6 +2,19 @@ import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 
+import { useState } from "react";
+import OpenClose from "./OpenClose"; // Import the hamburger menu logic
+import MobileNav from "./MobileNav"; // Import the mobile menu
+
+const HamburgerMenu = styled.div`
+  display: none;
+
+  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+    display: block; /* Ensures visibility in mobile view */
+    cursor: pointer;
+  }
+`;
+
 const HeaderContainer = styled(motion.header)`
   position: fixed;
   top: 0;
@@ -93,6 +106,7 @@ const PageHeading = styled(motion.h2)`
 
 const Header = () => {
   const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   // Map paths to page headings
   const pageHeadings = {
@@ -102,6 +116,19 @@ const Header = () => {
     "/design-process": "My Design Process",
     "/services": "My Services",
     "/showcase": "Design Showcase",
+  };
+
+  const links = [
+    { path: "/", label: "Home" },
+    { path: "/about", label: "About" },
+    { path: "/contact", label: "Contact" },
+    { path: "/design-process", label: "Design Process" },
+    { path: "/services", label: "Services" },
+    { path: "/showcase", label: "Showcase" },
+  ];
+
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
   };
 
   return (
@@ -119,6 +146,19 @@ const Header = () => {
           Landscape Design <span>|</span> Project Management
         </h2>
       </BusinessName>
+
+      <HamburgerMenu onClick={() => setMenuOpen(!menuOpen)}>
+        <OpenClose isActive={menuOpen} onClick={toggleMenu} />
+      </HamburgerMenu>
+
+      <MobileNav
+        isVisible={menuOpen}
+        isOpen={menuOpen}
+        setMenuOpen={setMenuOpen}
+        links={links}
+        onLinkClick={() => setMenuOpen(false)} // Close menu on link click
+      />
+
       <PageHeading
         key={location.pathname}
         initial={{ opacity: 0, y: -40 }}

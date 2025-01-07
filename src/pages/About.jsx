@@ -85,7 +85,7 @@ const About = () => {
 
   useEffect(() => {
     if (!loading && !minTimeElapsed) {
-      const timer = setTimeout(() => setLoading(false), 1500);
+      const timer = setTimeout(() => setLoading(false), 500);
       return () => clearTimeout(timer);
     }
   }, [loading, minTimeElapsed]);

@@ -1,3 +1,4 @@
+import React from "react";
 import styled, { keyframes } from "styled-components";
 
 const spin = keyframes`
@@ -17,11 +18,6 @@ const LoaderContainer = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 2000;
-  opacity: ${({ $active }) => ($active ? 1 : 0)};
-  visibility: ${({ $active }) => ($active ? "visible" : "hidden")};
-  transition:
-    opacity 0.5s ease,
-    visibility 0.5s ease;
 `;
 
 const Ball = styled.div`
@@ -33,8 +29,9 @@ const Ball = styled.div`
 `;
 
 const PageLoader = ({ active }) => {
+  if (!active) return null; // Render nothing if the loader is not active
   return (
-    <LoaderContainer $active={active}>
+    <LoaderContainer>
       <Ball />
     </LoaderContainer>
   );
