@@ -5,13 +5,16 @@ import PropTypes from "prop-types";
 const LogoContainer = styled.div.withConfig({
   shouldForwardProp: (prop) => prop !== "isFinal",
 })`
-  position: absolute;
+  position: ${(props) => (props.isFinal ? "fixed" : "absolute")};
   top: ${(props) => (props.isFinal ? "0" : "50%")};
   left: ${(props) => (props.isFinal ? "0" : "50%")};
-  transform: translate(5%, ${(props) => (props.isFinal ? "0" : "-50%")});
-  transition: all 1.5s ease-in-out;
+  transform: translate(
+    ${(props) => (props.isFinal ? "0" : "-50%")},
+    ${(props) => (props.isFinal ? "0" : "-50%")}
+  );
+  transition: all 2s ease-in-out;
   z-index: 2000;
-  width: ${(props) => (props.isFinal ? "15%" : "50%")};
+  width: ${(props) => (props.isFinal ? "15%" : "500px")};
   height: auto;
   border-radius: 50%;
 `;
