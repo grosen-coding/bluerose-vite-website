@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-const HeroContainer = styled(motion.section)`
+const HeroContainer = styled(motion.create("section"))`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -40,7 +40,7 @@ const HeroText = styled.div`
   }
 `;
 
-const CTAButton = styled(motion(Link))`
+const CTAButton = styled(motion.create(Link))`
   display: inline-block;
   margin-top: 2rem;
   padding: 0.8rem 1.5rem;
