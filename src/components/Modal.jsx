@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { IoCloseSharp } from "react-icons/io5";
+import { IoCloseSharp, IoExpandOutline } from "react-icons/io5";
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -33,6 +33,19 @@ const ModalContent = styled(motion.div)`
     width: 100%;
     margin-bottom: 1rem;
     border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .counter {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1.2rem;
+    color: ${(props) => props.theme.colors.primaryBlue};
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
   }
 
   .close-button {
@@ -40,8 +53,64 @@ const ModalContent = styled(motion.div)`
     top: 20px;
     right: 20px;
     cursor: pointer;
+    color: ${(props) => props.theme.colors.accentWhite};
+    font-size: 2rem;
+    transition:
+      transform 0.2s,
+      color 0.2s;
+
+    &:hover {
+      color: ${(props) => props.theme.colors.titleColor};
+      transform: scale(1.2);
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  .fullscreen-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
     color: ${(props) => props.theme.colors.primaryBlue};
     font-size: 2rem;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+`;
+
+const FullscreenModalContainer = styled(ModalOverlay)`
+  img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    color: ${(props) => props.theme.colors.accentWhite};
+    font-size: 2.5rem;
+    transition:
+      transform 0.2s,
+      color 0.2s;
+
+    &:hover {
+      color: ${(props) => props.theme.colors.titleColor};
+      transform: scale(1.2);
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
   }
 `;
 
@@ -119,10 +188,17 @@ const Modal = ({ project, onClose }) => {
           transition={{ duration: 0.3 }}
         >
           <IoCloseSharp className="close-button" onClick={onClose} />
+          <div className="counter">
+            {project.images.indexOf(currentImage) + 1}/{project.images.length}
+          </div>
           <img
             src={currentImage}
             alt={`Project image for ${project.name}`}
-            id={`modal-title-${project.id}`}
+            onClick={() => setFullscreen(true)}
+          />
+          <IoExpandOutline
+            className="fullscreen-icon"
+            onClick={() => setFullscreen(true)}
           />
           <ThumbnailSlider>
             <button
@@ -156,13 +232,20 @@ const Modal = ({ project, onClose }) => {
         </ModalContent>
       </ModalOverlay>
       {isFullscreen && (
-        <ModalOverlay onClick={() => setFullscreen(false)}>
-          <img src={currentImage} alt="Fullscreen view" />
+        <FullscreenModalContainer onClick={() => setFullscreen(false)}>
+          <motion.img
+            src={currentImage}
+            alt="Fullscreen view"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.3 }}
+          />
           <IoCloseSharp
             className="close-button"
             onClick={() => setFullscreen(false)}
           />
-        </ModalOverlay>
+        </FullscreenModalContainer>
       )}
     </>
   );

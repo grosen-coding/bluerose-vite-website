@@ -15,7 +15,7 @@ const LogoContainer = styled.div.withConfig({
   z-index: 2000;
   box-shadow: ${(props) =>
     props.isFinal ? "0 0 20px rgba(0, 0, 0, 0.6)" : "none"};
-  width: ${(props) => (props.isFinal ? "10rem" : "25rem")};
+  width: ${(props) => (props.isFinal ? "13rem" : "25rem")};
   height: auto;
   border-radius: 50%;
   transition:
@@ -50,7 +50,6 @@ const AnimatedLogo = ({ onComplete }) => {
           height: "100%",
           pointerEvents: "none",
           borderRadius: "50%",
-          // boxShadow: isFinal ? "0 0 20px rgba(0, 0, 0, 0.6)" : "none",
         }}
       >
         Your browser does not support SVGs.
