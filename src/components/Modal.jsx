@@ -71,15 +71,16 @@ const ModalContent = styled(motion.div)`
 
   .fullscreen-icon {
     position: absolute;
-    bottom: 10px;
-    right: 10px;
+    bottom: 30%;
+    left: -60px;
+    /* transform: translateX(50%); */
     cursor: pointer;
-    color: ${(props) => props.theme.colors.primaryBlue};
-    font-size: 2rem;
+    color: ${(props) => props.theme.colors.titleColor};
+    font-size: 3rem;
     transition: transform 0.2s;
 
     &:hover {
-      transform: scale(1.2);
+      transform: rotate(180deg) scale(1.2);
     }
   }
 `;

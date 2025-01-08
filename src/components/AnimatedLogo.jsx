@@ -23,11 +23,11 @@ const LogoContainer = styled.div.withConfig({
 
   border-radius: 50%;
   transition:
-    transform 1.8s ease,
-    width 1.8s ease,
+    transform 3.8s ease,
+    width 3.8s ease,
     box-shadow 2.3s ease,
-    top 1.8s ease,
-    left 1.8s ease;
+    top 3.8s ease,
+    left 3.8s ease;
 `;
 
 const AnimatedLogo = ({ onComplete }) => {

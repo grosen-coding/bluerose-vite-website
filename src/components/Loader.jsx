@@ -1,9 +1,14 @@
 import styled, { keyframes } from "styled-components";
 
 const spin = keyframes`
-  0% { transform: scale(0); opacity: 1; }
-  50% { transform: scale(1); opacity: 0.5; }
-  100% { transform: scale(0); opacity: 0; }
+  0% { transform: scale(1); opacity: .7; }
+
+  40% { transform: scale(.4); opacity: .4; }
+
+  70% { transform: scale(1); opacity: .7; }
+
+  100% { transform: scale(.4); opacity: .4; }
+
 `;
 
 const LoaderContainer = styled.div`
@@ -23,8 +28,18 @@ const Ball = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: ${(props) => props.theme.colors.primaryBlue};
-  animation: ${spin} 1.5s infinite ease-in-out;
+  background: ${(props) => props.theme.colors.titleColor};
+  animation: ${spin} 1s reverse ease-in-out;
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.8);
+    animation: ${spin} 1.5s infinite ease-in-out;
+  }
 `;
 
 const VisuallyHidden = styled.div`
