@@ -29,7 +29,7 @@ const Ball = styled.div`
   height: 50px;
   border-radius: 50%;
   background: ${(props) => props.theme.colors.titleColor};
-  animation: ${spin} 1s reverse ease-in-out;
+  animation: ${spin} 1s infinite ease-in-out;
 
   &:after {
     content: "";

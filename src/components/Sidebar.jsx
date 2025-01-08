@@ -21,7 +21,7 @@ const NavBar = styled(motion.nav)`
   justify-content: flex-end;
   align-items: center;
   flex-direction: column;
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
 
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
     display: none; /* Hide on mobile view */
