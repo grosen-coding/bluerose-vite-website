@@ -224,7 +224,7 @@ const Showcase = () => {
 
   return (
     <Main>
-      <ShowcaseContainer>
+      <ShowcaseContainer role="region" aria-labelledby="showcase-section">
         <div className="slider">
           <div
             className="slider-track"
@@ -236,21 +236,31 @@ const Showcase = () => {
               <div
                 key={project.id}
                 className="project"
+                role="button"
+                tabIndex={0}
                 onClick={() => setSelectedProject(project)}
               >
-                <img src={project.images[0]} alt={project.title} />
+                <img
+                  src={project.images[0]}
+                  alt={`Thumbnail for ${project.title}`}
+                />
                 <div className="project-title">{project.title}</div>
               </div>
             ))}
           </div>
         </div>
         <div className="slider-controls">
-          <button onClick={handlePrev} disabled={currentIndex === 0}>
+          <button
+            onClick={handlePrev}
+            disabled={currentIndex === 0}
+            aria-label="Previous Project"
+          >
             Previous
           </button>
           <button
             onClick={handleNext}
             disabled={currentIndex >= projects.length - 3}
+            aria-label="Next Project"
           >
             Next
           </button>

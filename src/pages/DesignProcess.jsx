@@ -255,7 +255,8 @@ const DesignProcess = () => {
       initial="initial"
       animate="animate"
       exit="exit"
-      aria-labelledby="design-process-title"
+      role="region"
+      aria-labelledby="design-process-section"
     >
       <IntroParagraph>
         With decades of experience, I’ve perfected a seamless,{" "}

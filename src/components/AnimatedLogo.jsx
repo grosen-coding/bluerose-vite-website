@@ -6,31 +6,37 @@ const LogoContainer = styled.div.withConfig({
   shouldForwardProp: (prop) => prop !== "isFinal",
 })`
   position: ${(props) => (props.isFinal ? "fixed" : "absolute")};
-  top: ${(props) => (props.isFinal ? "0" : "50%")};
-  left: ${(props) => (props.isFinal ? "0" : "50%")};
+  top: ${(props) => (props.isFinal ? "1rem" : "50%")};
+  left: ${(props) => (props.isFinal ? "1rem" : "50%")};
   transform: translate(
     ${(props) => (props.isFinal ? "0" : "-50%")},
     ${(props) => (props.isFinal ? "0" : "-50%")}
   );
-  transition: all 2s ease-in-out;
   z-index: 2000;
-  width: ${(props) => (props.isFinal ? "15%" : "500px")};
+  box-shadow: ${(props) =>
+    props.isFinal ? "0 0 20px rgba(0, 0, 0, 0.6)" : "none"};
+  width: ${(props) => (props.isFinal ? "10rem" : "25rem")};
   height: auto;
   border-radius: 50%;
+  transition:
+    transform 1.8s ease,
+    width 1.8s ease,
+    box-shadow 2.3s ease,
+    top 1.8s ease,
+    left 1.8s ease;
 `;
 
 const AnimatedLogo = ({ onComplete }) => {
   const [isFinal, setIsFinal] = useState(false);
 
   useEffect(() => {
-    // Wait for the SVGator animation duration before transitioning
-    const animationDuration = 6000; // Adjust based on your SVGator animation duration
+    const animationDuration = 6000; // Matches SVGator animation duration
     const timer = setTimeout(() => {
-      setIsFinal(true); // Trigger the scaling and moving transition
+      setIsFinal(true);
       if (onComplete) onComplete();
     }, animationDuration);
 
-    return () => clearTimeout(timer); // Cleanup timeout on component unmount
+    return () => clearTimeout(timer); // Cleanup on unmount
   }, [onComplete]);
 
   return (
@@ -44,9 +50,7 @@ const AnimatedLogo = ({ onComplete }) => {
           height: "100%",
           pointerEvents: "none",
           borderRadius: "50%",
-          boxShadow: isFinal ? "0 0 20px rgba(0, 0, 0, 0.6)" : "none",
-          // boxShadow: "0 0 20px rgba(0, 0, 0, 0.6)",
-          transition: "all 1.5s ease-in-out",
+          // boxShadow: isFinal ? "0 0 20px rgba(0, 0, 0, 0.6)" : "none",
         }}
       >
         Your browser does not support SVGs.

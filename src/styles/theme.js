@@ -1,7 +1,9 @@
 const theme = {
   colors: {
-    primaryBlue: "#1C5FAF", // Blue from the rose
-    primaryGreen: "#357F33", // Green from the stem and leaves
+    // primaryBlue: "#1C5FAF", // Blue from the rose
+    // primaryGreen: "#357F33", // Green from the stem and leaves
+    primaryBlue: "#236CD6", // Adjusted for better contrast
+    primaryGreen: "#3B8F3A", // Adjusted for improved readability
     darkGreen: "#05221C", // Dark green from the leaves
     neutralGrey: "#6D6D6D", // Grey from the mountains
     deepBlack: "#000000", // Black background

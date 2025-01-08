@@ -94,8 +94,17 @@ const About = () => {
     <Main>
       <PageLoader active={loading} />
       {!loading && (
-        <AboutContainer>
-          <TextColumn>
+        <AboutContainer
+          id="about-section"
+          role="region"
+          aria-labelledby="about-section"
+          tabIndex="-1"
+        >
+          <TextColumn
+            id="about-text"
+            role="article"
+            aria-labelledby="about-text"
+          >
             <p>
               Designing and building high-end residential landscapes has been my
               passion since 2002. Growing up in Ontario’s picturesque Beaver
@@ -131,10 +140,14 @@ const About = () => {
               and unparalleled care.
             </p>
           </TextColumn>
-          <ImageColumn>
+          <ImageColumn
+            id="about-image"
+            role="img"
+            aria-labelledby="about-image"
+          >
             <img
               src="https://picsum.photos/id/1005/600/400"
-              alt="Professional headshot"
+              alt="Professional headshot of Blue Rose Design founder"
             />
           </ImageColumn>
         </AboutContainer>

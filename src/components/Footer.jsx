@@ -33,7 +33,10 @@ const FooterContent = styled.div`
 
 const Footer = () => {
   return (
-    <FooterContainer aria-label="Site Footer">
+    <FooterContainer
+      role="contentinfo"
+      aria-label="Site Footer with copyright and privacy policy information"
+    >
       <FooterContent>
         <p>
           <span>Website Designed & Created by Blue Rose Design</span>
@@ -43,6 +46,7 @@ const Footer = () => {
           <a
             href="/privacy-policy"
             style={{ color: "inherit", textDecoration: "underline" }}
+            aria-label="Privacy Policy of Blue Rose Design"
           >
             Privacy Policy
           </a>

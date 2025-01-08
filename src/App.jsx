@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ThemeProvider } from "styled-components";
 import { AnimatePresence } from "framer-motion";
 import ScrollToTop from "./components/ScrollToTop";
@@ -134,9 +134,13 @@ const AnimatedRoutes = ({ handleNavigation }) => {
 };
 
 const PageWrapper = ({ children, handleNavigation }) => {
-  useState(() => {
-    if (handleNavigation) {
-      handleNavigation(() => {}); // Trigger navigation logic
+  const hasNavigated = useRef(false);
+
+  useEffect(() => {
+    if (handleNavigation && !hasNavigated.current) {
+      handleNavigation(() => {
+        hasNavigated.current = true; // Mark navigation as completed
+      });
     }
   }, [handleNavigation]);
 

@@ -28,6 +28,9 @@ const Main = ({ children }) => (
     initial="initial"
     animate="animate"
     exit="exit"
+    role="main"
+    aria-label="Main content area"
+    tabIndex="-1" // Focusable for navigation
     transition={{ duration: 0.5 }}
   >
     {children}

@@ -136,13 +136,14 @@ const Header = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1, delay: 2 }}
+      role="banner"
       aria-label="Main site header"
     >
-      <BusinessName>
-        <h1>
+      <BusinessName aria-labelledby="business-title business-subtitle">
+        <h1 id="business-title">
           BLUE ROSE <span>DESIGN</span>
         </h1>
-        <h2>
+        <h2 id="business-subtitle">
           Landscape Design <span>|</span> Project Management
         </h2>
       </BusinessName>
@@ -165,6 +166,7 @@ const Header = () => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 40 }}
         transition={{ duration: 0.8 }}
+        aria-label={`Page: ${pageHeadings[location.pathname] || ""}`}
       >
         {pageHeadings[location.pathname] || ""}
       </PageHeading>

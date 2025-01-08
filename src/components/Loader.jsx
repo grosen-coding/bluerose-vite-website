@@ -1,4 +1,3 @@
-import React from "react";
 import styled, { keyframes } from "styled-components";
 
 const spin = keyframes`
@@ -28,11 +27,24 @@ const Ball = styled.div`
   animation: ${spin} 1.5s infinite ease-in-out;
 `;
 
+const VisuallyHidden = styled.div`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+`;
+
 const PageLoader = ({ active }) => {
   if (!active) return null; // Render nothing if the loader is not active
   return (
-    <LoaderContainer>
+    <LoaderContainer aria-live="polite" aria-busy="true">
       <Ball />
+      <VisuallyHidden>Loading...</VisuallyHidden>
     </LoaderContainer>
   );
 };

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import PropTypes from "prop-types";
@@ -50,7 +50,6 @@ const ThumbnailSlider = styled.div`
   align-items: center;
   gap: 0.5rem;
   margin-top: 1rem;
-  position: relative;
 
   .thumbnail {
     cursor: pointer;
@@ -73,7 +72,6 @@ const ThumbnailSlider = styled.div`
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
-    transition: background 0.3s;
 
     &:hover {
       background: ${(props) => props.theme.colors.accentGreen};
@@ -86,54 +84,33 @@ const ThumbnailSlider = styled.div`
   }
 `;
 
-const FullscreenImage = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.9);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1100;
-
-  img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 8px;
-  }
-
-  .close-button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-    color: ${(props) => props.theme.colors.accentWhite};
-    font-size: 2rem;
-  }
-`;
-
 const Modal = ({ project, onClose }) => {
   const [currentImage, setCurrentImage] = useState(project.images[0]);
   const [isFullscreen, setFullscreen] = useState(false);
   const [thumbnailIndex, setThumbnailIndex] = useState(0);
 
-  const showPrevThumbnail = () => {
-    if (thumbnailIndex > 0) {
-      setThumbnailIndex(thumbnailIndex - 1);
-    }
-  };
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
 
-  const showNextThumbnail = () => {
-    if (thumbnailIndex + 4 < project.images.length) {
-      setThumbnailIndex(thumbnailIndex + 1);
-    }
-  };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose]);
 
   return (
     <>
-      <ModalOverlay onClick={onClose}>
+      <ModalOverlay
+        onClick={onClose}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={`modal-title-${project.id}`}
+        aria-describedby={`modal-description-${project.id}`}
+      >
         <ModalContent
           onClick={(e) => e.stopPropagation()}
           initial={{ opacity: 0, scale: 0.9 }}
@@ -144,14 +121,15 @@ const Modal = ({ project, onClose }) => {
           <IoCloseSharp className="close-button" onClick={onClose} />
           <img
             src={currentImage}
-            alt={`Project ${project.id}`}
-            onClick={() => setFullscreen(true)}
+            alt={`Project image for ${project.name}`}
+            id={`modal-title-${project.id}`}
           />
           <ThumbnailSlider>
             <button
               className="nav-button"
-              onClick={showPrevThumbnail}
+              onClick={() => setThumbnailIndex(thumbnailIndex - 1)}
               disabled={thumbnailIndex === 0}
+              aria-label="Previous Thumbnail"
             >
               {"<"}
             </button>
@@ -161,17 +139,16 @@ const Modal = ({ project, onClose }) => {
                 <img
                   key={image}
                   src={image}
-                  alt="Thumbnail"
-                  className={`thumbnail ${
-                    image === currentImage ? "active" : ""
-                  }`}
+                  alt={`Thumbnail for ${project.name}`}
+                  className={`thumbnail ${image === currentImage ? "active" : ""}`}
                   onClick={() => setCurrentImage(image)}
                 />
               ))}
             <button
               className="nav-button"
-              onClick={showNextThumbnail}
+              onClick={() => setThumbnailIndex(thumbnailIndex + 1)}
               disabled={thumbnailIndex + 4 >= project.images.length}
+              aria-label="Next Thumbnail"
             >
               {">"}
             </button>
@@ -179,13 +156,13 @@ const Modal = ({ project, onClose }) => {
         </ModalContent>
       </ModalOverlay>
       {isFullscreen && (
-        <FullscreenImage onClick={() => setFullscreen(false)}>
-          <img src={currentImage} alt="Full Screen View" />
+        <ModalOverlay onClick={() => setFullscreen(false)}>
+          <img src={currentImage} alt="Fullscreen view" />
           <IoCloseSharp
             className="close-button"
             onClick={() => setFullscreen(false)}
           />
-        </FullscreenImage>
+        </ModalOverlay>
       )}
     </>
   );

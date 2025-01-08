@@ -73,6 +73,7 @@ const Sidebar = () => {
   return (
     <NavBar
       role="navigation"
+      aria-label="Main Navigation Sidebar"
       initial={{ opacity: 0, x: -100 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 2 }}
@@ -81,6 +82,7 @@ const Sidebar = () => {
         to="/"
         className={pathname === "/" ? "active" : ""}
         aria-label="Home"
+        role="link"
       >
         <FontAwesomeIcon icon={faHome} />
       </NavLink>
@@ -88,6 +90,7 @@ const Sidebar = () => {
         to="/about"
         className={pathname === "/about" ? "active" : ""}
         aria-label="About"
+        role="link"
       >
         <FontAwesomeIcon icon={faUser} />
       </NavLink>
@@ -95,6 +98,7 @@ const Sidebar = () => {
         to="/showcase"
         className={pathname === "/showcase" ? "active" : ""}
         aria-label="Portfolio"
+        role="link"
       >
         <FontAwesomeIcon icon={faSuitcase} />
       </NavLink>
@@ -102,6 +106,7 @@ const Sidebar = () => {
         to="/design-process"
         className={pathname === "/design-process" ? "active" : ""}
         aria-label="Design Process"
+        role="link"
       >
         <FontAwesomeIcon icon={faPen} />
       </NavLink>
@@ -109,6 +114,7 @@ const Sidebar = () => {
         to="/services"
         className={pathname === "/services" ? "active" : ""}
         aria-label="Services"
+        role="link"
       >
         <FontAwesomeIcon icon={faWrench} />
       </NavLink>
@@ -116,6 +122,7 @@ const Sidebar = () => {
         to="/contact"
         className={pathname === "/contact" ? "active" : ""}
         aria-label="Contact"
+        role="link"
       >
         <FontAwesomeIcon icon={faEnvelope} />
       </NavLink>

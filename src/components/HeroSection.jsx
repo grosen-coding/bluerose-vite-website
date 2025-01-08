@@ -101,9 +101,13 @@ const HeroSection = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
+      role="main"
+      aria-label="Introduction and call to action"
+      aria-labelledby="hero-heading"
     >
       <HeroText>
         <motion.h2
+          id="hero-heading"
           initial="hidden"
           animate="visible"
           variants={containerVariants}
@@ -122,6 +126,7 @@ const HeroSection = () => {
         variants={buttonAnimation}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
+        aria-label="Discover more about our services"
       >
         Discover More
       </CTAButton>

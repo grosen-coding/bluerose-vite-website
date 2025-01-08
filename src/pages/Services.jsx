@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Main from "../components/Main";
 import PageLoader from "../components/Loader"; // Assuming the loader component exists
 import styled from "styled-components";
@@ -102,9 +103,13 @@ const Services = () => {
 
   return (
     <Main>
-      <ServicesContainer aria-labelledby="services">
-        <div className="services-wrapper">
-          <ServiceCard>
+      <ServicesContainer role="region" aria-labelledby="services-section">
+        <div
+          className="services-wrapper"
+          aria-label="Services"
+          id="services-section"
+        >
+          <ServiceCard aria-label="Landscape Design">
             <h3>Landscape Design</h3>
             <p>
               Transform your outdoor space into a masterpiece with our custom
@@ -113,11 +118,15 @@ const Services = () => {
               to your vision. From waterfalls to natural stonework, every
               element is carefully planned to bring your dream to life.
             </p>
-            <a href="/design-process" className="learn-more">
+            <Link
+              to="/design-process"
+              className="learn-more"
+              aria-label="Learn more about our Design Process"
+            >
               Learn More
-            </a>
+            </Link>
           </ServiceCard>
-          <ServiceCard>
+          <ServiceCard aria-label="Project Management">
             <h3>Project Management</h3>
             <p>
               Ensure every detail of your landscape design is brought to life
@@ -125,9 +134,13 @@ const Services = () => {
               oversee every step, from concept to completion, working with
               top-tier contractors to execute designs to the highest standards.
             </p>
-            <a href="/contact" className="learn-more">
+            <Link
+              to="/contact"
+              className="learn-more"
+              aria-label="Get started with Project Management"
+            >
               Get Started
-            </a>
+            </Link>
           </ServiceCard>
         </div>
       </ServicesContainer>

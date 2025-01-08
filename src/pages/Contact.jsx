@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import PageLoader from "../components/Loader"; // Assuming Loader component exists
+import PageLoader from "../components/Loader";
 
 const pageVariants = {
   initial: { opacity: 0 },
@@ -101,13 +101,21 @@ const Contact = () => {
       initial="initial"
       animate="animate"
       exit="exit"
-      aria-labelledby="contact-title"
+      aria-labelledby="contact-section"
     >
       <p>
         Reach out to Blue Rose Design for inquiries, consultations, and service
         details. We’re here to help bring your dream landscapes to life!
       </p>
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={handleSubmit}
+        role="form"
+        aria-labelledby="contact-form"
+        aria-describedby="contact-description"
+      >
+        <span id="contact-description" className="sr-only">
+          Fill out the form below to send us a message.
+        </span>
         <label htmlFor="name">Name</label>
         <input
           type="text"
@@ -134,7 +142,9 @@ const Contact = () => {
           required
         />
 
-        <button type="submit">Send</button>
+        <button type="submit" aria-label="Send your message">
+          Send
+        </button>
       </form>
     </ContactContainer>
   );
