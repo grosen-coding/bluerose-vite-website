@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 const LogoContainer = styled.div.withConfig({
   shouldForwardProp: (prop) => prop !== "isFinal",
 })`
-  position: ${(props) => (props.isFinal ? "fixed" : "absolute")};
+  position: fixed;
   top: ${(props) => (props.isFinal ? "1rem" : "50%")};
   left: ${(props) => (props.isFinal ? "1rem" : "50%")};
   transform: translate(
@@ -15,12 +15,11 @@ const LogoContainer = styled.div.withConfig({
   z-index: 2000;
   box-shadow: ${(props) =>
     props.isFinal ? "0 0 20px rgba(0, 0, 0, 0.6)" : "none"};
-  width: ${(props) => (props.isFinal ? "13rem" : "25rem")};
+  width: ${(props) => (props.isFinal ? "150px" : "500px")};
   height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-
   border-radius: 50%;
   transition:
     transform 3.8s ease,

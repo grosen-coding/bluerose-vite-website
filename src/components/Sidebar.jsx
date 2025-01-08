@@ -13,25 +13,25 @@ import { motion } from "framer-motion";
 
 const NavBar = styled(motion.nav)`
   background: rgba(0, 0, 0, 0.6);
-  width: 10%;
-  height: 100vh;
+  width: 100px;
+  height: 100%;
   position: fixed;
   z-index: 3;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   flex-direction: column;
-  padding-bottom: 2rem;
+  padding-bottom: 5%;
 
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
     display: none; /* Hide on mobile view */
   }
 
   a {
-    font-size: 2.3rem;
+    font-size: 32px;
     color: ${(props) => props.theme.colors.titleColor};
     opacity: 0.8;
-    padding: 0.6rem 0;
+    padding: 8px 0;
     text-align: center;
     font-weight: 600;
     text-decoration: none;
@@ -49,7 +49,7 @@ const NavBar = styled(motion.nav)`
 
     &:after {
       content: attr(aria-label);
-      font-size: 1.1rem;
+      font-size: 12px;
       position: absolute;
       top: 50%;
       left: 50%;

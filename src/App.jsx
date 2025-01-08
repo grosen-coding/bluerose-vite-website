@@ -24,10 +24,8 @@ const AppContainer = styled.div`
     "header header"
     "nav main"
     "footer footer";
-  grid-template-columns: 10% 1fr;
-  grid-template-rows: auto 1fr 4%;
-  height: 100vh;
-  width: 100vw;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: 70px 1fr 30px;
 
   @media (max-width: 768px) {
     grid-template-areas:
@@ -41,6 +39,7 @@ const AppContainer = styled.div`
 
 const MainWrapper = styled.main`
   grid-area: main;
+  height: calc(100vh - 100px);
   overflow: hidden;
 `;
 

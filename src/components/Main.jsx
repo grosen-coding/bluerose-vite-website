@@ -2,18 +2,14 @@ import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-const MainContent = styled(motion.main)`
+const MainContent = styled(motion.div)`
   width: 100%;
-  height: 100%;
-  margin-top: 6rem; /* Adjust to avoid overlap with Header */
   color: ${(props) => props.theme.colors.accentWhite};
   background-color: ${(props) =>
     props.theme.colors.backgroundGreen}; /* Optional */
 
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
-    padding: 1rem;
-    margin-top: 5rem;
-  }
+    padding: 1rem;  }
 `;
 
 const pageTransition = {

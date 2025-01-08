@@ -9,17 +9,12 @@ const ServicesContainer = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: -2rem;
+  height: calc(100vh - 100px);
+  width: 80%;
+  margin: 0 auto;
 
   @media (max-width: 768px) {
     padding: 1rem;
-  }
-
-  h1 {
-    font-size: 2.5rem;
-    color: ${(props) => props.theme.colors.primaryBlue};
-    margin-bottom: 1.5rem;
-    text-align: center;
   }
 
   .services-wrapper {
@@ -40,8 +35,8 @@ const ServiceCard = styled.div`
   border: 1px solid ${(props) => props.theme.colors.lightGrey};
   border-radius: 8px;
   padding: 2rem;
+  width: 100%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: left;
   transition: all 0.3s ease-in-out;
   opacity: 0.9;
   cursor: pointer;
@@ -54,7 +49,7 @@ const ServiceCard = styled.div`
   }
 
   h3 {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     color: ${(props) => props.theme.colors.titleColor};
     margin-bottom: 1rem;
   }
@@ -62,7 +57,7 @@ const ServiceCard = styled.div`
   p {
     font-size: 1rem;
     color: ${(props) => props.theme.colors.textGrey};
-    line-height: 1.6;
+    line-height: 1.4;
     margin-bottom: 1.5rem;
   }
 
@@ -78,6 +73,8 @@ const ServiceCard = styled.div`
     transition:
       background-color 0.3s ease-in-out,
       color 0.3s ease-in-out;
+    cursor: pointer;
+    margin: 0 auto;
 
     &:hover {
       background-color: ${(props) => props.theme.colors.accentGreen};

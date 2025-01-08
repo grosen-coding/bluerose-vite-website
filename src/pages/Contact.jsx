@@ -12,11 +12,9 @@ const pageVariants = {
 // Styled Components
 const ContactContainer = styled(motion.section)`
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 95vh;
-  width: 100%;
+  height: calc(100vh - 100px);
   color: ${(props) => props.theme.colors.accentWhite};
   text-align: center;
   padding: 2rem;
@@ -26,6 +24,7 @@ const ContactContainer = styled(motion.section)`
     font-size: 1.2rem;
     max-width: 70%;
     margin-bottom: 2rem;
+    padding: 3rem;
   }
 
   form {

@@ -5,14 +5,13 @@ const FooterContainer = styled.footer`
   bottom: 0;
   right: 0;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   background-color: ${(props) => props.theme.colors.darkGreen};
   color: ${(props) => props.theme.colors.accentWhite};
-  padding: 0.5rem 1rem;
-  height: auto;
-  width: 90%;
-  font-size: 0.8rem;
+  padding: 0.5rem ;
+  height: 30px;
+  width: calc(100% - 100px);
 
   p {
     opacity: 0.7;
@@ -28,6 +27,7 @@ const FooterContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: .8rem;
   width: 100%;
 `;
 

@@ -19,13 +19,14 @@ const HeaderContainer = styled(motion.header)`
   position: fixed;
   top: 0;
   right: 0;
-  width: 90%;
+  left: 100px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   z-index: 1000;
   background-color: rgba(0, 0, 0, 1);
-  padding-right: 2rem;
+  padding: 0 5rem;
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
     flex-direction: column;
   }
@@ -37,8 +38,7 @@ const BusinessName = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding-left: 6rem;
-  width: 70%;
+  padding-left: 1rem;
   cursor: crosshair;
 
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
@@ -91,13 +91,11 @@ const BusinessName = styled.div`
 `;
 
 const PageHeading = styled(motion.h2)`
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: ${(props) => props.theme.colors.titleColor2};
   font-weight: 400;
   margin: 0;
-  /* align-self: flex-start; */
   padding-right: 1rem;
-  width: 35%;
 
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
     font-size: 1.2rem;

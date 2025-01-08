@@ -9,9 +9,11 @@ const ShowcaseContainer = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  padding-top: 0;
+  padding-top: 3rem;
   width: 100%;
+  height: calc(100vh - 100px);
+  max-width: 80%;
+  margin: 0 auto;
 
   .slider {
     position: relative;

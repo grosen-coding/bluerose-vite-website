@@ -11,15 +11,21 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Montserrat', sans-serif;
     background-color: ${(props) => props.theme.colors.backgroundGreen};
     color: #333;
-    line-height: 1.6;
+    line-height: 1.3;
   }
 
     section {
       background-color: ${(props) => props.theme.colors.backgroundGreen};
-      height: 100%;
-      width: 100%;
-      padding: 3rem;
-      margin-top: 4rem;
+      
+
+      /* height: calc(100%-100px); */
+      /* padding: 3rem; */
+
+      /* display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; */
+      /* margin-top: 4rem; */
     }
 
   h1 {
@@ -37,12 +43,14 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h2 {
-    font-size: clamp(1.5rem, 4vw, 2.5rem); /* Responsive scaling */
+    font-size: 1rem;
       margin-bottom: 1rem;
       font-weight: 300;
       text-align: right;
       padding: 1rem 0;
   }
+
+
 
   a {
     text-decoration: none;

@@ -16,8 +16,7 @@ const ProcessContainer = styled(motion.section)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  height: calc(100vh - 100px);
   color: ${(props) => props.theme.colors.darkGreen};
   padding: 0 2rem 2rem;
   text-align: center;
@@ -29,7 +28,7 @@ const ProcessContainer = styled(motion.section)`
 `;
 
 const IntroParagraph = styled.p`
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.2;
   text-align: center;
   margin: 3rem 0 2rem;
@@ -52,7 +51,7 @@ const CardContainer = styled.div`
   position: relative;
   width: 100%;
   max-width: 900px;
-  height: 280px;
+  height: 300px;
   margin: 1rem 0;
   display: flex;
   align-items: center;
@@ -75,11 +74,12 @@ const Card = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 1rem;
   text-align: justify;
 
   h3 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
     color: ${(props) => props.theme.colors.primaryGreen};
     font-weight: bold;
@@ -89,7 +89,7 @@ const Card = styled(motion.div)`
   }
 
   p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: ${(props) => props.theme.colors.textGrey};
     line-height: 1.2;
     max-width: 90%;

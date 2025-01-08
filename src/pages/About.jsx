@@ -5,16 +5,13 @@ import PageLoader from "../components/Loader";
 
 const AboutContainer = styled.section`
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  gap: 2rem;
+  height: calc(100vh - 100px);
   background-color: ${(props) => props.theme.colors.backgroundGreen};
-  padding: 0 3rem;
   color: ${(props) => props.theme.colors.textGrey};
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 90%;
+  margin: 2rem auto;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -24,15 +21,14 @@ const AboutContainer = styled.section`
 `;
 
 const TextColumn = styled.div`
-  flex: 2;
+  flex: 3;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: -3rem;
+  align-items: center;
 
   p {
     font-size: 1rem;
-    line-height: 1.3;
     margin-bottom: 1.5rem;
     opacity: 0.8;
 
@@ -56,7 +52,7 @@ const ImageColumn = styled.div`
     border-radius: 8px;
     border: 2px solid ${(props) => props.theme.colors.titleColor};
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    transform: translateY(-50%) translateX(20px);
+    transform: translateY(0) translateX(20px);
   }
 `;
 
@@ -122,14 +118,6 @@ const About = () => {
               behavior. Over the years, I’ve mastered tools like Dynascape,
               Sketchup, and Photoshop, merging traditional drafting techniques
               with cutting-edge 3D rendering to bring every design to life.
-            </p>
-            <p>
-              Beyond landscaping, I’ve nurtured a love for web design since
-              1997. After completing training at Juno College in 2021, I began
-              creating dynamic, visually stunning websites, including this one.
-              Whether crafting landscapes or coding a webpage, my unwavering
-              attention to detail ensures every project is executed with
-              excellence.
             </p>
             <p>
               At Blue Rose Design, my mission is simple: to transform visions
