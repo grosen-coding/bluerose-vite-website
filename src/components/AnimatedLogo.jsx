@@ -17,6 +17,10 @@ const LogoContainer = styled.div.withConfig({
     props.isFinal ? "0 0 20px rgba(0, 0, 0, 0.6)" : "none"};
   width: ${(props) => (props.isFinal ? "13rem" : "25rem")};
   height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   border-radius: 50%;
   transition:
     transform 1.8s ease,
@@ -46,10 +50,8 @@ const AnimatedLogo = ({ onComplete }) => {
         data="/logo.svg"
         aria-label="Blue Rose Design Logo"
         style={{
-          width: "100%",
-          height: "100%",
           pointerEvents: "none",
-          borderRadius: "50%",
+          // borderRadius: "50%",
         }}
       >
         Your browser does not support SVGs.

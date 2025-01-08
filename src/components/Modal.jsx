@@ -38,8 +38,8 @@ const ModalContent = styled(motion.div)`
 
   .counter {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 100px;
+    right: -30px;
     font-size: 1.2rem;
     color: ${(props) => props.theme.colors.primaryBlue};
     font-weight: bold;
@@ -50,11 +50,11 @@ const ModalContent = styled(motion.div)`
 
   .close-button {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 40px;
+    right: -30px;
     cursor: pointer;
     color: ${(props) => props.theme.colors.accentWhite};
-    font-size: 2rem;
+    font-size: 3rem;
     transition:
       transform 0.2s,
       color 0.2s;
@@ -86,10 +86,11 @@ const ModalContent = styled(motion.div)`
 
 const FullscreenModalContainer = styled(ModalOverlay)`
   img {
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: contain;
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
     border-radius: 8px;
+    cursor: crosshair;
   }
 
   .close-button {
