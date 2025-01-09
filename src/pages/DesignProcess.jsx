@@ -28,8 +28,8 @@ const ProcessContainer = styled(motion.section)`
 `;
 
 const IntroParagraph = styled.p`
-  font-size: 1rem;
-  line-height: 1.2;
+  font-size: 1.2rem;
+  line-height: 1.5;
   text-align: center;
   margin: 3rem 0 2rem;
   max-width: 900px;
@@ -51,13 +51,13 @@ const CardContainer = styled.div`
   position: relative;
   width: 100%;
   max-width: 900px;
-  height: 300px;
+  height: 320px;
   margin: 1rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-
+  padding: 1rem;
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
     height: auto;
   }
@@ -67,7 +67,7 @@ const Card = styled(motion.div)`
   position: absolute;
   width: 100%;
   height: 100%;
-  background: ${(props) => props.theme.colors.lightGrey};
+  background: rgba(35, 108, 214, 0.3);
   border: 1px solid ${(props) => props.theme.colors.titleColor};
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -79,20 +79,23 @@ const Card = styled(motion.div)`
   text-align: justify;
 
   h3 {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     margin-bottom: 1rem;
-    color: ${(props) => props.theme.colors.primaryGreen};
-    font-weight: bold;
+    text-transform: uppercase;
+    color: ${(props) => props.theme.colors.titleColor};
+    font-weight: 700;
     border-bottom: 1px solid ${(props) => props.theme.colors.lightGrey};
     padding-bottom: 0.5rem;
     width: 90%;
+    letter-spacing: normal;
   }
 
   p {
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: ${(props) => props.theme.colors.textGrey};
-    line-height: 1.2;
-    max-width: 90%;
+    line-height: 1.5;
+    width: 90%;
+    opacity: 0.8;
   }
 
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
@@ -110,14 +113,14 @@ const Arrow = styled.button`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: ${(props) => props.theme.colors.primaryBlue};
+  background: ${(props) => props.theme.colors.primaryGreen};
   color: ${(props) => props.theme.colors.accentWhite};
   border: none;
   border-radius: 50%;
   width: 2.2rem;
   height: 2.2rem;
   display: flex;
-  opacity: 0.7;
+  opacity: 0.8;
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -138,12 +141,12 @@ const Arrow = styled.button`
 
   &.left {
     position: absolute;
-    left: 5px; /* Adjust for visibility */
+    left: 10px; /* Adjust for visibility */
   }
 
   &.right {
     position: absolute;
-    right: 5px;
+    right: 10px;
   }
 
   svg {

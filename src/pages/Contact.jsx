@@ -44,21 +44,20 @@ const ContactContainer = styled(motion.section)`
     width: 100%;
     max-width: 600px;
 
-    label {
-      margin-top: 1rem;
-      text-align: left;
-      width: 100%;
-      color: ${(props) => props.theme.colors.accentWhite};
+    input {
+      height: 3.5rem;
     }
 
     input,
     textarea {
+      color: ${(props) => props.theme.colors.accentWhite};
       width: 100%;
       padding: 0.8rem;
       margin-top: 0.5rem;
       border: none;
-      border-radius: 5px;
+      border-radius: 2px;
       font-size: 1rem;
+      background: #115173;
     }
 
     textarea {
@@ -67,14 +66,13 @@ const ContactContainer = styled(motion.section)`
 
       &::placeholder {
         font-size: 1.1rem;
-        font-style: italic;
         font-family: "Poppins", sans-serif;
       }
     }
 
     button {
       margin-top: 1rem;
-      padding: 0.8rem 2rem;
+      padding: 0.8rem 4rem;
       background-color: ${(props) => props.theme.colors.primaryBlue};
       color: ${(props) => props.theme.colors.accentWhite};
       border: none;
@@ -162,7 +160,9 @@ const Contact = () => {
           <span id="contact-description" className="sr-only">
             Fill out the form below to send us a message.
           </span>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name" className="sr-only">
+            Name
+          </label>
           <input
             type="text"
             id="name"
@@ -171,7 +171,9 @@ const Contact = () => {
             required
           />
 
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email" className="sr-only">
+            Email
+          </label>
           <input
             type="email"
             id="email"
@@ -179,8 +181,20 @@ const Contact = () => {
             placeholder="Your Email"
             required
           />
+          <label htmlFor="email" className="sr-only">
+            Email
+          </label>
+          <input
+            type="text"
+            id="location"
+            name="location"
+            placeholder="City/Town"
+            required
+          />
 
-          <label htmlFor="message">Message</label>
+          <label htmlFor="message" className="sr-only">
+            Message
+          </label>
           <textarea
             id="message"
             name="message"
