@@ -8,11 +8,7 @@ const HeroContainer = styled(motion.create("section"))`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: calc(100vh - 100px);
+  height: 100%;
   background:
     linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
     url("https://picsum.photos/id/1018/1920/1080") no-repeat center center/cover;

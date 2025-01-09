@@ -13,10 +13,10 @@ const spin = keyframes`
 
 const LoaderContainer = styled.div`
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 100px;
+  left: 100px;
+  width: calc(100vw - 100px);
+  height: calc(100vh - 100px);
   background: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
   display: flex;
   justify-content: center;
@@ -28,7 +28,7 @@ const Ball = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: ${(props) => props.theme.colors.titleColor};
+  background: ${(props) => props.theme.colors.accentGreen};
   animation: ${spin} 1s infinite ease-in-out;
 
   &:after {
@@ -38,7 +38,7 @@ const Ball = styled.div`
     height: 50px;
     border-radius: 50%;
     background: rgba(0, 0, 0, 0.8);
-    animation: ${spin} 1.5s infinite ease-in-out;
+    animation: ${spin} 0.5s infinite ease-in-out;
   }
 `;
 

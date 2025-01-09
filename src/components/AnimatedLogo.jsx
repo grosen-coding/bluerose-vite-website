@@ -6,27 +6,43 @@ const LogoContainer = styled.div.withConfig({
   shouldForwardProp: (prop) => prop !== "isFinal",
 })`
   position: fixed;
-  top: ${(props) => (props.isFinal ? "1rem" : "50%")};
-  left: ${(props) => (props.isFinal ? "1rem" : "50%")};
-  transform: translate(
-    ${(props) => (props.isFinal ? "0" : "-50%")},
-    ${(props) => (props.isFinal ? "0" : "-50%")}
-  );
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 2000;
-  box-shadow: ${(props) =>
-    props.isFinal ? "0 0 20px rgba(0, 0, 0, 0.6)" : "none"};
-  width: ${(props) => (props.isFinal ? "150px" : "500px")};
+  width: 500px;
   height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  transition:
-    transform 3.8s ease,
-    width 3.8s ease,
-    box-shadow 2.3s ease,
-    top 3.8s ease,
-    left 3.8s ease;
+  ${(props) => props.isFinal && "animation: slideToCorner 2.8s ease forwards;"}
+
+  @keyframes slideToCorner {
+    0% {
+      top: 50%;
+      left: 50%;
+      width: 500px;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 0px rgba(0, 0, 0, 0.8);
+    }
+
+    50% {
+      top: 0;
+      left: 0;
+      width: 150px;
+      transform: translate(0, 0);
+      box-shadow: 0 0 0px rgba(0, 0, 0, 0.8);
+    }
+
+    100% {
+      top: 10px;
+      left: 10px;
+      width: 180px;
+      transform: translate(0, 0);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    }
+  }
 `;
 
 const AnimatedLogo = ({ onComplete }) => {

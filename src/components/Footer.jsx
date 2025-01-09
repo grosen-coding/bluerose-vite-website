@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const FooterContainer = styled.footer`
   position: fixed;
+  opacity: .4;
   bottom: 0;
   right: 0;
   display: flex;

@@ -10,22 +10,13 @@ const GlobalStyles = createGlobalStyle`
   body {
     font-family: 'Montserrat', sans-serif;
     background-color: ${(props) => props.theme.colors.backgroundGreen};
-    color: #333;
+    color: ${(props) => props.theme.colors.textColor};
     line-height: 1.3;
   }
 
     section {
       background-color: ${(props) => props.theme.colors.backgroundGreen};
       
-
-      /* height: calc(100%-100px); */
-      /* padding: 3rem; */
-
-      /* display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center; */
-      /* margin-top: 4rem; */
     }
 
   h1 {
@@ -50,12 +41,20 @@ const GlobalStyles = createGlobalStyle`
       padding: 1rem 0;
   }
 
+  p {
+    color: white;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
 
 
   a {
     text-decoration: none;
     color: inherit;
   }
+  
 
     @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
     section {

@@ -2,16 +2,14 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { IoCloseSharp, IoExpandOutline } from "react-icons/io5";
+import { IoCloseSharp } from "react-icons/io5";
 
 const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  /* bottom: 0; */
   width: 100%;
   height: 100%;
-  /* max-height: 80%; */
   background: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
@@ -22,10 +20,8 @@ const ModalOverlay = styled.div`
 const ModalContent = styled(motion.div)`
   background: ${(props) => props.theme.colors.backgroundWhite};
   border-radius: 8px;
-  /* padding: 2rem; */
-  width: 80%;
-  /* max-height: 70%; */
-  /* top: 0; */
+  width: 100%;
+  height: 100%;
   max-width: 900px;
   text-align: center;
   display: flex;
@@ -43,14 +39,20 @@ const ModalContent = styled(motion.div)`
 
   .counter {
     position: absolute;
-    top: 100px;
-    right: -30px;
+    top: 20px;
+    right: 50%;
+    transform: translateX(50%);
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 1.2rem;
-    color: ${(props) => props.theme.colors.primaryBlue};
-    font-weight: bold;
-    background: rgba(255, 255, 255, 0.8);
+    color: ${(props) => props.theme.colors.lightGrey};
+    background: ${(props) => props.theme.colors.primaryBlue};
     padding: 0.3rem 0.6rem;
-    border-radius: 4px;
+    border-radius: 50%;
+    border: 1px solid ${(props) => props.theme.colors.titleColor};
   }
 
   .close-button {
@@ -71,21 +73,6 @@ const ModalContent = styled(motion.div)`
 
     &:active {
       transform: scale(0.9);
-    }
-  }
-
-  .fullscreen-icon {
-    position: absolute;
-    bottom: 30%;
-    left: -60px;
-    /* transform: translateX(50%); */
-    cursor: pointer;
-    color: ${(props) => props.theme.colors.titleColor};
-    font-size: 3rem;
-    transition: transform 0.2s;
-
-    &:hover {
-      transform: rotate(180deg) scale(1.2);
     }
   }
 `;
@@ -201,10 +188,6 @@ const Modal = ({ project, onClose }) => {
           <img
             src={currentImage}
             alt={`Project image for ${project.name}`}
-            onClick={() => setFullscreen(true)}
-          />
-          <IoExpandOutline
-            className="fullscreen-icon"
             onClick={() => setFullscreen(true)}
           />
           <ThumbnailSlider>

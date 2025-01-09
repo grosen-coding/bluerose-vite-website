@@ -9,10 +9,9 @@ const ShowcaseContainer = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 3rem;
   width: 100%;
-  height: calc(100vh - 100px);
-  max-width: 80%;
+  height: 100%;
+  max-width: 90%;
   margin: 0 auto;
 
   .slider {
@@ -59,6 +58,11 @@ const ShowcaseContainer = styled.section`
         z-index: 10;
       }
 
+      &:hover .project-title {
+        transition: all 0.3s ease-in-out;
+        color: ${(props) => props.theme.colors.titleColor};
+      }
+
       img {
         width: 100%;
         height: 100%;
@@ -76,7 +80,8 @@ const ShowcaseContainer = styled.section`
         text-align: center;
         padding: 0.5rem;
         font-size: 1.2rem;
-        font-weight: bold;
+        /* letter-spacing: normal; */
+        /* font-weight: bold; */
       }
     }
   }

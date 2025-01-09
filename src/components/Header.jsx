@@ -25,7 +25,7 @@ const HeaderContainer = styled(motion.header)`
   align-items: center;
   justify-content: space-between;
   z-index: 1000;
-  background-color: rgba(0, 0, 0, 1);
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 0 5rem;
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
     flex-direction: column;
@@ -36,9 +36,9 @@ const BusinessName = styled.div`
   text-align: left;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  padding-left: 1rem;
+  padding-left: 2rem;
   cursor: crosshair;
 
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
@@ -59,7 +59,7 @@ const BusinessName = styled.div`
     span {
       color: ${(props) => props.theme.colors.accentWhite};
       font-weight: 300;
-      font-size: 2.5rem;
+      font-size: 3rem;
     }
 
     @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
@@ -142,7 +142,7 @@ const Header = () => {
           BLUE ROSE <span>DESIGN</span>
         </h1>
         <h2 id="business-subtitle">
-          Landscape Design <span>|</span> Project Management
+          Custom Landscape Design <span>|</span> 3D Rendering
         </h2>
       </BusinessName>
 
@@ -160,10 +160,9 @@ const Header = () => {
 
       <PageHeading
         key={location.pathname}
-        initial={{ opacity: 0, y: -40 }}
+        initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 40 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 1 }}
         aria-label={`Page: ${pageHeadings[location.pathname] || ""}`}
       >
         {pageHeadings[location.pathname] || ""}

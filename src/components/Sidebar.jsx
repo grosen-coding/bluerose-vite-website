@@ -4,7 +4,6 @@ import {
   faUser,
   faEnvelope,
   faSuitcase,
-  faWrench,
   faPen,
 } from "@fortawesome/free-solid-svg-icons";
 import { NavLink, useLocation } from "react-router-dom";
@@ -21,17 +20,17 @@ const NavBar = styled(motion.nav)`
   justify-content: flex-end;
   align-items: center;
   flex-direction: column;
-  padding-bottom: 5%;
+  padding-bottom: 10%;
 
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
     display: none; /* Hide on mobile view */
   }
 
   a {
-    font-size: 32px;
+    font-size: 2.5rem;
     color: ${(props) => props.theme.colors.titleColor};
     opacity: 0.8;
-    padding: 8px 0;
+    padding: 12px 0;
     text-align: center;
     font-weight: 600;
     text-decoration: none;
@@ -49,7 +48,7 @@ const NavBar = styled(motion.nav)`
 
     &:after {
       content: attr(aria-label);
-      font-size: 12px;
+      font-size: 0.8rem;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -71,13 +70,7 @@ const Sidebar = () => {
   const { pathname } = useLocation();
 
   return (
-    <NavBar
-      role="navigation"
-      aria-label="Main Navigation Sidebar"
-      initial={{ opacity: 0, x: -100 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 2 }}
-    >
+    <NavBar role="navigation" aria-label="Main Navigation Sidebar">
       <NavLink
         to="/"
         className={pathname === "/" ? "active" : ""}
@@ -97,7 +90,7 @@ const Sidebar = () => {
       <NavLink
         to="/showcase"
         className={pathname === "/showcase" ? "active" : ""}
-        aria-label="Portfolio"
+        aria-label="Projects"
         role="link"
       >
         <FontAwesomeIcon icon={faSuitcase} />
@@ -109,14 +102,6 @@ const Sidebar = () => {
         role="link"
       >
         <FontAwesomeIcon icon={faPen} />
-      </NavLink>
-      <NavLink
-        to="/services"
-        className={pathname === "/services" ? "active" : ""}
-        aria-label="Services"
-        role="link"
-      >
-        <FontAwesomeIcon icon={faWrench} />
       </NavLink>
       <NavLink
         to="/contact"

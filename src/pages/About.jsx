@@ -11,7 +11,9 @@ const AboutContainer = styled.section`
   background-color: ${(props) => props.theme.colors.backgroundGreen};
   color: ${(props) => props.theme.colors.textGrey};
   max-width: 90%;
-  margin: 2rem auto;
+  margin: -2rem auto 0;
+  padding: 2rem;
+  gap: 2rem;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -21,16 +23,21 @@ const AboutContainer = styled.section`
 `;
 
 const TextColumn = styled.div`
-  flex: 3;
+  flex: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   p {
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin-bottom: 1.5rem;
     opacity: 0.8;
+    text-align: justify;
+
+    &:first-of-type {
+      padding-top: 5rem;
+    }
 
     &:last-of-type {
       margin-bottom: 0;
