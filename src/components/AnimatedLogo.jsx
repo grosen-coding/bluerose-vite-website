@@ -9,7 +9,7 @@ const LogoContainer = styled.div.withConfig({
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 2000;
+  z-index: 9000;
   width: 500px;
   height: auto;
   display: flex;
