@@ -52,7 +52,7 @@ const ModalContent = styled(motion.div)`
     background: ${(props) => props.theme.colors.primaryBlue};
     padding: 0.3rem 0.6rem;
     border-radius: 50%;
-    border: 1px solid ${(props) => props.theme.colors.titleColor};
+    border: 2px solid ${(props) => props.theme.colors.accentWhite};
   }
 
   .close-button {
