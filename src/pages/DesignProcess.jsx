@@ -51,13 +51,14 @@ const CardContainer = styled.div`
   position: relative;
   width: 100%;
   max-width: 900px;
-  height: 320px;
+  height: 380px;
+
   margin: 1rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 1rem;
+  padding: 2rem 1rem;
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
     height: auto;
   }
@@ -75,7 +76,7 @@ const Card = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 2rem 1rem;
   text-align: justify;
 
   h3 {
@@ -189,37 +190,37 @@ const DesignProcess = () => {
     {
       title: "1. Initial Consultation",
       description:
-        "Our design journey begins with an in-depth consultation where we take the time to truly understand your vision. During this on-site meeting, we discuss your goals, preferences, and ideas while exploring the potential of your outdoor space. This is where we align our passion for creativity with your aspirations, ensuring every detail is captured to begin crafting a design that resonates with your unique needs. We value open communication, and this step sets the tone for a collaborative partnership that will carry through every phase of the process.",
+        "Our design journey begins together with a free, in-depth consultation at your home, where I take the time to truly understand both you, and your vision. During this on-site meeting, we discuss your goals, preferences, and ideas while exploring the potential of your outdoor space. This is where I learn and understand how to align my passion for creativity and detail with your aspirations, ensuring every aspect is captured. This meeting helps me begin crafting a design that resonates with your unique needs and requests. I value open communication, and this step sets the tone for a collaborative partnership that will carry through every phase of the process.",
     },
     {
       title: "2. Site Analysis",
       description:
-        "With precision and care, we conduct a thorough site analysis to assess the characteristics of your property. From soil quality and topography to sunlight patterns and existing vegetation, every aspect is meticulously evaluated. This step allows us to understand the unique challenges and opportunities your site offers. By studying these elements in detail, we lay the groundwork for a design that integrates seamlessly with the natural environment, ensuring beauty, functionality, and sustainability.",
+        "With precision and care, I conduct a thorough site analysis to assess the characteristics of your property. From soil quality and topography to sunlight patterns and existing vegetation, every aspect is meticulously evaluated. This step allows me to also understand the unique challenges and opportunities your site may offer. By studying these elements in detail, I lay the groundwork for a design that integrates seamlessly with the natural environment, ensuring beauty, functionality, and sustainability. My commitment to understanding your property ensures that the final design is not only visually stunning, but is built to last and thrive for years to come.",
     },
     {
       title: "3. Conceptual Design",
       description:
-        "Our conceptual design phase brings your vision to life through initial sketches and layouts. These hand-drawn designs reflect our shared ideas, capturing the essence of your dream landscape. We embrace creativity and artistry at this stage, blending innovation with the natural beauty of your surroundings. Feedback is encouraged as we refine the design, ensuring it aligns perfectly with your expectations while adding the unique touch that sets our work apart.",
+        "My conceptual design phase begins to bring your vision to life through initial sketches, discussions, pictures and layouts. I enjoy the lost art of hand-drafting preliminary designs for the freedom it allows me to reflect and shape our shared ideas, capturing the essence of your dream landscape. I become very excited to express my creativity and artistry at this stage, blending innovation and experience with the natural beauty of your surroundings. Feedback is strongly encouraged as we refine the design, ensuring it aligns perfectly with your expectations while adding the unique touch that sets my work apart.",
     },
     {
       title: "4. Detailed Design",
       description:
-        "This phase is where our passion for precision takes center stage. We develop comprehensive construction drawings and detailed renderings that provide a clear, immersive visualization of your project. From structural layouts to intricate planting plans, every detail is accounted for. These designs not only guide the construction process but also allow you to see the full potential of your outdoor space, ensuring every element aligns with your vision.",
+        "This phase is where my passion for precision takes center stage. I use multiple kinds of CAD-based software to develop a set of comprehensive construction drawings and detailed 3D renderings that provide a clear, immersive visualization of your project. From structural layouts to intricate planting plans, every detail is accounted for, and explained. These designs not only guide and help understand the construction process, but also allow you to see the full potential of your outdoor space, ensuring every element aligns with your vision. I believe that the beauty of a landscape lies in the details, and this step is where we bring those details to life.",
     },
     {
       title: "5. Material Selection",
       description:
-        "Selecting the right materials and plants is an integral part of bringing your design to life. With our expertise and attention to detail, we guide you through this process, helping you choose elements that complement the aesthetic and functional goals of your project. From elegant stonework and sustainable materials to vibrant, native plant species, we ensure every choice enhances the beauty and longevity of your landscape.",
+        "Selecting the right materials and plants is an integral part of bringing your design to life. With my experience, expertise and attention to detail, I comfortably guide you through this process, helping to recommend and choose elements that complement the aesthetic and functional goals of your project. From elegant stonework and natural-looking water features, to sustainable materials and vibrant, native plant species, I ensure every choice enhances the beauty and longevity of your landscape. This step is where the project truly begins to feel alive, and my process helps to ensure a seamless and enjoyable experience for you.",
     },
     {
       title: "6. Construction",
       description:
-        "The construction phase is where your dream landscape begins to take shape. Collaborating with top-tier contractors and craftsmen, we oversee every aspect of the build process with meticulous attention to detail. From grading and excavation to planting and finishing touches, our team ensures that the design is executed flawlessly. Our commitment to excellence guarantees that the final result exceeds your expectations and stands as a testament to our shared vision.",
+        "The construction phase is where your dream landscape begins to take shape. Collaborating with top-tier contractors and craftsmen is vital to exceeding my own expectations. I work in the field, hands-on, strictly with contractors I trust, to personally oversee every aspect of the build process with meticulous attention to detail, right down to the finishing touches. I provide consistent, clear communication with everyone involved to ensure that the design is executed flawlessly. My commitment to excellence guarantees that the final result exceeds your expectations and stands as a testament to our shared vision.",
     },
     {
       title: "7. Completion!",
       description:
-        "Time to wrap up! As your project reaches completion, we conduct a thorough walkthrough to ensure every element is executed to perfection. This final step includes a detailed review of your new outdoor space, as well as guidance on maintenance and care to preserve its beauty. Our relationship doesn’t end here—our passion for landscaping means we are always available to provide support and advice as your landscape matures and flourishes over time.",
+        "Time to wrap up! As your project reaches completion, I conduct a thorough walkthrough to ensure every element is executed to perfection. This final step includes a detailed review of your new outdoor space, as well as guidance on usage, maintenance and care to preserve its beauty and longevity. Our relationship doesn’t end here...my passion for my work means I will be always available to provide support and advice as your landscape matures and flourishes over time. I take great pride in delivering a finished product that not only meets but exceeds your expectations, ensuring your outdoor space is a source of joy and inspiration for years to come.",
     },
   ];
   const [currentIndex, setCurrentIndex] = useState(0);

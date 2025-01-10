@@ -25,7 +25,7 @@ const ContactContainer = styled(motion.section)`
   p {
     font-size: 1.2rem;
     padding: 0 3rem;
-    opacity: 0.8;
+    opacity: 0.9;
     text-align: left;
 
     span {
@@ -75,6 +75,7 @@ const ContactContainer = styled(motion.section)`
       padding: 0.8rem 4rem;
       background-color: ${(props) => props.theme.colors.primaryBlue};
       color: ${(props) => props.theme.colors.accentWhite};
+      opacity: 0.8;
       border: none;
       border-radius: 5px;
       font-size: 1.1rem;
@@ -145,7 +146,7 @@ const Contact = () => {
 
       <ContactText>
         <p>
-          <span>Ready to get started??...</span> Reach out to me for inquiries,
+          <span>Ready to get started?...</span> Reach out to me for inquiries,
           consultations, and service details. Allow me to help guide you through
           creating breathtaking, natural landscapes tailored to your vision.
           From initial design to project completion, I'm here to help every step
