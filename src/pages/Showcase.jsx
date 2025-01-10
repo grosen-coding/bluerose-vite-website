@@ -1,6 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
 import styled from "styled-components";
-import Main from "../components/Main";
 import Modal from "../components/Modal";
 import PageLoader from "../components/Loader"; // Loader component
 
@@ -9,10 +8,13 @@ const ShowcaseContainer = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
   max-width: 90%;
+  height: 100vh;
   margin: 0 auto;
+
+  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+    max-width: 100%;
+  }
 
   .slider {
     position: relative;
@@ -20,8 +22,8 @@ const ShowcaseContainer = styled.section`
     max-width: 1200px;
     overflow: hidden;
 
-    @media (max-width: 768px) {
-      max-width: 100%;
+    @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+      width: 100%;
     }
 
     .slider-track {
@@ -33,17 +35,6 @@ const ShowcaseContainer = styled.section`
       flex: 0 0 33.33%;
       max-width: 33.33%;
       padding: 1rem;
-
-      @media (max-width: 768px) {
-        flex: 0 0 50%;
-        max-width: 50%;
-      }
-
-      @media (max-width: 480px) {
-        flex: 0 0 100%;
-        max-width: 100%;
-      }
-
       position: relative;
       overflow: hidden;
       background-color: ${(props) => props.theme.colors.lightGray};
@@ -80,8 +71,6 @@ const ShowcaseContainer = styled.section`
         text-align: center;
         padding: 0.5rem;
         font-size: 1.2rem;
-        /* letter-spacing: normal; */
-        /* font-weight: bold; */
       }
     }
   }
@@ -230,56 +219,54 @@ const Showcase = () => {
   };
 
   return (
-    <Main>
-      <ShowcaseContainer role="region" aria-labelledby="showcase-section">
-        <div className="slider">
-          <div
-            className="slider-track"
-            style={{
-              transform: `translateX(-${currentIndex * 33.33}%)`,
-            }}
-          >
-            {projects.map((project) => (
-              <div
-                key={project.id}
-                className="project"
-                role="button"
-                tabIndex={0}
-                onClick={() => setSelectedProject(project)}
-              >
-                <img
-                  src={project.images[0]}
-                  alt={`Thumbnail for ${project.title}`}
-                />
-                <div className="project-title">{project.title}</div>
-              </div>
-            ))}
-          </div>
+    <ShowcaseContainer role="region" aria-labelledby="showcase-section">
+      <div className="slider">
+        <div
+          className="slider-track"
+          style={{
+            transform: `translateX(-${currentIndex * 33.33}%)`,
+          }}
+        >
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              className="project"
+              role="button"
+              tabIndex={0}
+              onClick={() => setSelectedProject(project)}
+            >
+              <img
+                src={project.images[0]}
+                alt={`Thumbnail for ${project.title}`}
+              />
+              <div className="project-title">{project.title}</div>
+            </div>
+          ))}
         </div>
-        <div className="slider-controls">
-          <button
-            onClick={handlePrev}
-            disabled={currentIndex === 0}
-            aria-label="Previous Project"
-          >
-            Previous
-          </button>
-          <button
-            onClick={handleNext}
-            disabled={currentIndex >= projects.length - 3}
-            aria-label="Next Project"
-          >
-            Next
-          </button>
-        </div>
-        {selectedProject && (
-          <Modal
-            project={selectedProject}
-            onClose={() => setSelectedProject(null)}
-          />
-        )}
-      </ShowcaseContainer>
-    </Main>
+      </div>
+      <div className="slider-controls">
+        <button
+          onClick={handlePrev}
+          disabled={currentIndex === 0}
+          aria-label="Previous Project"
+        >
+          Previous
+        </button>
+        <button
+          onClick={handleNext}
+          disabled={currentIndex >= projects.length - 3}
+          aria-label="Next Project"
+        >
+          Next
+        </button>
+      </div>
+      {selectedProject && (
+        <Modal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
+    </ShowcaseContainer>
   );
 };
 

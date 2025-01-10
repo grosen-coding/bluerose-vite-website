@@ -19,16 +19,17 @@ const HeaderContainer = styled(motion.header)`
   position: fixed;
   top: 0;
   right: 0;
-  left: 100px;
-  height: 100px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   padding: 0 5rem;
-  @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
-    flex-direction: column;
+
+  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+    left: 0;
+    height: 120px;
   }
 `;
 
@@ -38,12 +39,18 @@ const BusinessName = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-left: 2rem;
+  padding-left: 10rem;
   cursor: crosshair;
 
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
     text-align: center;
-    align-items: center;
+  }
+
+  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+    padding-left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
   }
 
   h1 {
@@ -56,17 +63,18 @@ const BusinessName = styled.div`
     line-height: 1.2;
     padding-top: 1rem;
 
+    @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+      font-size: 2rem;
+      padding-top: 0;
+    }
+
     span {
       color: ${(props) => props.theme.colors.accentWhite};
       font-weight: 300;
       font-size: 3rem;
-    }
 
-    @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
-      font-size: 1.8rem;
-
-      span {
-        font-size: 1.2rem;
+      @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+        font-size: 2rem;
       }
     }
   }
@@ -98,7 +106,7 @@ const PageHeading = styled(motion.h2)`
   padding-right: 1rem;
 
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
-    font-size: 1.2rem;
+    display: none;
   }
 `;
 
@@ -108,7 +116,7 @@ const Header = () => {
 
   // Map paths to page headings
   const pageHeadings = {
-    "/": "Home",
+    "/": "",
     "/about": "Who I Am",
     "/contact": "Contact Me",
     "/design-process": "My Design Process",
@@ -121,7 +129,6 @@ const Header = () => {
     { path: "/about", label: "About" },
     { path: "/contact", label: "Contact" },
     { path: "/design-process", label: "Design Process" },
-    { path: "/services", label: "Services" },
     { path: "/showcase", label: "Showcase" },
   ];
 
@@ -163,6 +170,7 @@ const Header = () => {
         initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
+        role="heading"
         aria-label={`Page: ${pageHeadings[location.pathname] || ""}`}
       >
         {pageHeadings[location.pathname] || ""}

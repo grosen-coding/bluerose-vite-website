@@ -16,17 +16,26 @@ const ContactContainer = styled(motion.section)`
   flex-direction: row-reverse;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 100px);
+  height: 100%;
+  width: 100%;
   color: ${(props) => props.theme.colors.accentWhite};
-  text-align: center;
-  padding: 2rem;
+  padding: 4rem 2rem 0;
   background-color: ${(props) => props.theme.colors.backgroundGreen};
+
+  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+    flex-direction: column;
+  }
 
   p {
     font-size: 1.2rem;
     padding: 0 3rem;
     opacity: 0.9;
     text-align: left;
+
+    @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+      font-size: 1rem;
+      padding: 10rem 0 0 0;
+    }
 
     span {
       font-size: 1.8rem;
@@ -43,6 +52,10 @@ const ContactContainer = styled(motion.section)`
     align-items: center;
     width: 100%;
     max-width: 600px;
+
+    @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+      width: 100%;
+    }
 
     input {
       height: 3.5rem;
@@ -89,11 +102,15 @@ const ContactContainer = styled(motion.section)`
   }
 `;
 const ContactText = styled.div`
-  flex: 1;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+    width: 100%;
+  }
 
   h3 {
     font-size: 1.5rem;
@@ -101,13 +118,18 @@ const ContactText = styled.div`
 `;
 
 const ContactForm = styled.div`
-  flex: 1;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 2rem;
   gap: 2rem;
+
+  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+    width: 100%;
+    padding: 1rem 0;
+  }
 `;
 
 const Contact = () => {

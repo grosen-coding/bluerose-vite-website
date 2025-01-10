@@ -14,11 +14,6 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.3;
   }
 
-    section {
-      background-color: ${(props) => props.theme.colors.backgroundGreen};
-      
-    }
-
   h1 {
     font-family: 'Playfair Display', serif;
     margin: 0;
@@ -57,9 +52,7 @@ const GlobalStyles = createGlobalStyle`
   
 
     @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
-    section {
-      padding: 2rem; /* Adjust spacing for smaller screens */
-    }
+
 
     h2 {
       text-align: center; /* Center-align text on smaller devices */

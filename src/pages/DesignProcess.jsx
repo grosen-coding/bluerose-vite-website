@@ -16,14 +16,14 @@ const ProcessContainer = styled(motion.section)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 100px);
+  height: 100%;
+  width: 100%;
   color: ${(props) => props.theme.colors.darkGreen};
-  padding: 0 2rem 2rem;
+  padding: 2rem 2rem 2rem;
   text-align: center;
 
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
     padding: 1rem;
-    height: auto;
   }
 `;
 
@@ -44,6 +44,7 @@ const IntroParagraph = styled.p`
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
     font-size: 1rem;
     line-height: 1.5;
+    padding-top: 10rem;
   }
 `;
 
@@ -57,10 +58,10 @@ const CardContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   padding: 2rem 1rem;
+
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
-    height: auto;
+    height: 500px;
   }
 `;
 

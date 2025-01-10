@@ -5,7 +5,7 @@ const SvgContainer = styled.svg`
   cursor: pointer;
   width: 50px;
   height: 50px;
-  top: 1rem;
+  top: 130px;
   right: 1rem;
   z-index: 5000;
   transition: all 0.8s ease-in-out;

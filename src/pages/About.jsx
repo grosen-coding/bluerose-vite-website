@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Main from "../components/Main";
 import styled from "styled-components";
 import PageLoader from "../components/Loader";
 
@@ -7,18 +6,23 @@ const AboutContainer = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 100px);
   background-color: ${(props) => props.theme.colors.backgroundGreen};
   color: ${(props) => props.theme.colors.textGrey};
   max-width: 90%;
-  margin: -2rem auto 0;
-  padding: 2rem;
+  padding: 0 0 0 10rem;
   gap: 2rem;
+  height: 100%;
 
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
     padding: 1.5rem;
+  }
+
+  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+    flex-direction: column-reverse;
+    padding: 14rem 1rem 0;
+    margin: 0 auto;
   }
 `;
 
@@ -28,6 +32,7 @@ const TextColumn = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
 
   p {
     font-size: 1.1rem;
@@ -37,10 +42,24 @@ const TextColumn = styled.div`
 
     &:first-of-type {
       padding-top: 5rem;
+
+      @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+        padding-top: 1rem;
+      }
     }
 
     &:last-of-type {
       margin-bottom: 0;
+      @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+    padding-top: 0;
+    p {
+      font-size: 0.9rem;
     }
   }
 `;
@@ -53,13 +72,16 @@ const ImageColumn = styled.div`
   justify-content: center;
   height: 100%;
 
+  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+    margin: 0 auto;
+  }
+
   img {
-    width: 100%;
-    max-width: 450px;
+    max-width: 100%;
+    width: 450px;
     border-radius: 8px;
     border: 2px solid ${(props) => props.theme.colors.titleColor};
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    transform: translateY(0) translateX(20px);
   }
 `;
 
@@ -94,7 +116,7 @@ const About = () => {
   }, [loading, minTimeElapsed]);
 
   return (
-    <Main>
+    <>
       <PageLoader active={loading} />
       {!loading && (
         <AboutContainer
@@ -147,7 +169,7 @@ const About = () => {
           </ImageColumn>
         </AboutContainer>
       )}
-    </Main>
+    </>
   );
 };
 
