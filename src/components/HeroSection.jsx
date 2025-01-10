@@ -120,13 +120,13 @@ const HeroSection = () => {
         </motion.h2>
       </HeroText>
       <CTAButton
-        to="/services"
+        to="/design-process"
         initial="hidden"
         animate="visible"
         variants={buttonAnimation}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        aria-label="Discover more about our services"
+        aria-label="Discover more about my design process"
       >
         Discover More
       </CTAButton>

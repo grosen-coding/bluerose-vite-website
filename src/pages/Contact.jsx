@@ -137,6 +137,12 @@ const Contact = () => {
       exit="exit"
       aria-labelledby="contact-section"
     >
+      {/* <h3 id="contact-section" className="sr-only">
+        Thornbury | Collingwood | Beaver Valley | Wasaga Beach | Owen Sound |
+        Barrie | Muskoka | Georgian Bay | Blue Mountains | Meaford | Grey
+        Highlands | Simcoe County
+      </h3> */}
+
       <ContactText>
         <p>
           <span>Ready to get started??...</span> Reach out to me for inquiries,
