@@ -7,7 +7,7 @@ const AboutContainer = styled.section`
   align-items: center;
   justify-content: center;
   background:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     url("/hand-sketch-half-colour-2.jpeg") no-repeat center center/cover;
   color: ${(props) => props.theme.colors.textGrey};
   width: 100%;
@@ -39,8 +39,9 @@ const TextColumn = styled.div`
   p {
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
-    opacity: 0.8;
+    opacity: 1;
     text-align: justify;
+    text-shadow: 0 0 50px rgba(0, 0, 0, 1);
 
     &:first-of-type {
       padding-top: 5rem;

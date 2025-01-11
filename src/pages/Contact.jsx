@@ -13,7 +13,7 @@ const pageVariants = {
 // Styled Components
 const ContactContainer = styled(motion.section)`
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -21,7 +21,7 @@ const ContactContainer = styled(motion.section)`
   color: ${(props) => props.theme.colors.accentWhite};
   padding: 4rem 2rem 0;
   background:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     url("/waterfall-half-colour.jpeg") no-repeat center center/cover;
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
     flex-direction: column;
@@ -30,7 +30,9 @@ const ContactContainer = styled(motion.section)`
   p {
     font-size: 1.2rem;
     padding: 0 3rem;
-    opacity: 0.9;
+    opacity: 1;
+    text-shadow: 0 0 0px rgba(0, 0, 0, 1);
+
     text-align: left;
 
     @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
@@ -103,7 +105,7 @@ const ContactContainer = styled(motion.section)`
   }
 `;
 const ContactText = styled.div`
-  width: 50%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: center;

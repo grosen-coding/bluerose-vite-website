@@ -9,7 +9,7 @@ const ShowcaseContainer = styled.section`
   align-items: center;
   justify-content: center;
   background:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url("/waterfall-half-colour-6.png") no-repeat center center/cover;
   width: 100%;
   height: 100vh;

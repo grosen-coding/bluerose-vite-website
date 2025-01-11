@@ -10,7 +10,7 @@ const HeroContainer = styled(motion.create("section"))`
   height: 100vh;
   width: 100%;
   background:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
+    linear-gradient(to bottom, rgba(70, 66, 66, 0.7), rgba(0, 0, 0, 0.7)),
     url("/waterfall-half-colour-3.jpeg") no-repeat center center/cover;
   color: ${(props) => props.theme.colors.accentWhite};
 
@@ -29,8 +29,8 @@ const HeroText = styled.div`
     font-weight: 300;
     line-height: 1.6;
     font-family: "Montserrat", sans-serif;
-    color: ${(props) => props.theme.colors.accentWhite};
-    text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    color: ${(props) => props.theme.colors.titleColor};
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
     text-align: center;
     font-style: italic;
     margin-bottom: 2rem;

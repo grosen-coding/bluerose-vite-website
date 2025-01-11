@@ -9,7 +9,8 @@ const StyledEmailAnimation = styled.div`
     display: inline-block;
     font-size: 2.5rem;
     font-family: "Lucida Handwriting", cursive;
-    color: ${(props) => props.theme.colors.titleColor};
+    color: ${(props) => props.theme.colors.titleColor2};
+    text-shadow: 0 0 50px rgba(0, 0, 0, 1);
     animation: fadeIn 0.5s ease-in-out forwards;
     opacity: 0;
     font-weight: 100;

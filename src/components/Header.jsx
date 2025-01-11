@@ -24,7 +24,7 @@ const HeaderContainer = styled(motion.header)`
   align-items: center;
   justify-content: space-between;
   z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.4);
   padding: 0 5rem;
 
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {

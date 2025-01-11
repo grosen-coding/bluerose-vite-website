@@ -19,7 +19,7 @@ const ProcessContainer = styled(motion.section)`
   height: 100%;
   width: 100%;
   background:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     url("/backyard-half-colour.jpeg") no-repeat center center/cover;
   padding: 2rem 2rem 2rem;
   text-align: center;
@@ -30,12 +30,20 @@ const ProcessContainer = styled(motion.section)`
 `;
 
 const IntroParagraph = styled.p`
+  border: 1px solid ${(props) => props.theme.colors.titleColor};
+  background-color: rgba(0, 0, 0, 0.5);
   font-size: 1.2rem;
   line-height: 1.5;
+  border-radius: 8px;
+  letter-spacing: 0.8px;
   text-align: center;
-  margin: 3rem 0 2rem;
-  max-width: 900px;
-  color: ${(props) => props.theme.colors.lightGrey};
+  padding: 1rem;
+  margin: 7rem 0 2rem;
+  max-width: 1200px;
+  color: ${(props) => props.theme.colors.accentWhite};
+  text-shadow: 0 0 50px rgba(0, 0, 0, 1);
+
+  opacity: 0.9;
 
   span {
     color: ${(props) => props.theme.colors.titleColor};
@@ -91,15 +99,18 @@ const Card = styled(motion.div)`
     border-bottom: 1px solid ${(props) => props.theme.colors.lightGrey};
     padding-bottom: 0.5rem;
     width: 90%;
-    letter-spacing: normal;
+    letter-spacing: 0.8px;
   }
 
   p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: ${(props) => props.theme.colors.textGrey};
     line-height: 1.5;
     width: 90%;
-    opacity: 0.8;
+    opacity: 1;
+    letter-spacing: 0.8px;
+    text-shadow: 0 0 50px rgba(0, 0, 0, 1);
+    opacity: 0.9;
   }
 
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
@@ -162,7 +173,8 @@ const Arrow = styled.button`
 const IndicatorContainer = styled.div`
   display: flex;
   gap: 0.5rem;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
+  margin: 0 0 1rem 0;
 `;
 
 const Indicator = styled.div.withConfig({
@@ -176,6 +188,7 @@ const Indicator = styled.div.withConfig({
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
   color: white;
   font-size: 1rem;
   font-weight: bold;
@@ -273,6 +286,17 @@ const DesignProcess = () => {
         stress-free. From the initial consultation to project completion, every
         step is meticulously planned to deliver unmatched quality and elegance.
       </IntroParagraph>
+      <IndicatorContainer>
+        {steps.map((_, index) => (
+          <Indicator
+            key={index}
+            active={index === currentIndex}
+            onClick={() => handleIndicatorClick(index)}
+          >
+            {index + 1}
+          </Indicator>
+        ))}
+      </IndicatorContainer>
       <CardContainer>
         <Arrow
           className="left"
@@ -314,17 +338,6 @@ const DesignProcess = () => {
           <FaArrowRight />
         </Arrow>
       </CardContainer>
-      <IndicatorContainer>
-        {steps.map((_, index) => (
-          <Indicator
-            key={index}
-            active={index === currentIndex}
-            onClick={() => handleIndicatorClick(index)}
-          >
-            {index + 1}
-          </Indicator>
-        ))}
-      </IndicatorContainer>
     </ProcessContainer>
   );
 };

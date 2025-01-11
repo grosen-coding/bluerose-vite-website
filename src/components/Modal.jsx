@@ -39,7 +39,7 @@ const ModalContent = styled(motion.div)`
 
   .counter {
     position: absolute;
-    top: 20px;
+    bottom: 7rem;
     right: 50%;
     transform: translateX(50%);
     height: 50px;
