@@ -20,8 +20,9 @@ const ContactContainer = styled(motion.section)`
   width: 100%;
   color: ${(props) => props.theme.colors.accentWhite};
   padding: 4rem 2rem 0;
-  background-color: ${(props) => props.theme.colors.backgroundGreen};
-
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
+    url("/waterfall-half-colour.jpeg") no-repeat center center/cover;
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
     flex-direction: column;
   }

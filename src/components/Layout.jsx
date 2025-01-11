@@ -16,8 +16,8 @@ const LayoutContainer = styled.div`
 const MainContent = styled.main`
   display: flex;
   height: 100%;
-  width: calc(100% - 100px);
-  left: 100px;
+  width: 100vw;
+  overflow-x: hidden;
   position: relative;
 
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {

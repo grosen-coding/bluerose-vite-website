@@ -8,7 +8,10 @@ const ShowcaseContainer = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 90%;
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)),
+    url("/waterfall-half-colour-6.png") no-repeat center center/cover;
+  width: 100%;
   height: 100vh;
   margin: 0 auto;
 

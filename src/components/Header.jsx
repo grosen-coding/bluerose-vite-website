@@ -19,7 +19,7 @@ const HeaderContainer = styled(motion.header)`
   position: fixed;
   top: 0;
   right: 0;
-  width: 100%;
+  width: calc(100% - 100px);
   display: flex;
   align-items: center;
   justify-content: space-between;

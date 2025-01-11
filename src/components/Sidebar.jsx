@@ -11,7 +11,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 const NavBar = styled(motion.nav)`
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.8);
   width: 100px;
   height: 100%;
   position: fixed;

@@ -18,7 +18,9 @@ const ProcessContainer = styled(motion.section)`
   justify-content: center;
   height: 100%;
   width: 100%;
-  color: ${(props) => props.theme.colors.darkGreen};
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)),
+    url("/backyard-half-colour.jpeg") no-repeat center center/cover;
   padding: 2rem 2rem 2rem;
   text-align: center;
 
@@ -69,7 +71,7 @@ const Card = styled(motion.div)`
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(35, 108, 214, 0.3);
+  background: rgba(21, 50, 94, 0.8);
   border: 1px solid ${(props) => props.theme.colors.titleColor};
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

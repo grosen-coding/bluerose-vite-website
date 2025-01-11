@@ -11,7 +11,7 @@ const HeroContainer = styled(motion.create("section"))`
   width: 100%;
   background:
     linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
-    url("https://picsum.photos/id/1018/1920/1080") no-repeat center center/cover;
+    url("/waterfall-half-colour-3.jpeg") no-repeat center center/cover;
   color: ${(props) => props.theme.colors.accentWhite};
 
   @media (max-width: 768px) {

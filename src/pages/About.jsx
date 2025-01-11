@@ -6,9 +6,11 @@ const AboutContainer = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${(props) => props.theme.colors.backgroundGreen};
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)),
+    url("/hand-sketch-half-colour-2.jpeg") no-repeat center center/cover;
   color: ${(props) => props.theme.colors.textGrey};
-  max-width: 90%;
+  width: 100%;
   padding: 0 0 0 10rem;
   gap: 2rem;
   height: 100%;
