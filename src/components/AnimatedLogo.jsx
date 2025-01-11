@@ -37,7 +37,7 @@ const LogoContainer = styled.div.withConfig({
       left: 50%;
       width: 180px;
       transform: translate(-50%, 0);
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
     }
   }
 
